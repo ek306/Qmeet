@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: e@v.com
+Date: Wed, 22 Apr 2020 18:19:25 -0000
+Message-ID: <158757956532.24252.15170250069680571091@DESKTOP-SMS215E>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/qmeet/reset/Mg/5fv-2d5e17324c0e9f98c83c/
+
+Your username, in case you've forgotten: eesauser
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------

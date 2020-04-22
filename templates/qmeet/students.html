@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p>This page shows a list of all students</p>
+    <div>
+        <ul id="student-list">
+
+        </ul>
+    </div>
+
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            url: "{% url 'get all students' %}",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                var i;
+                for (i=0; i<data.students.length; i++) {
+                  alert(data.students[i].username);
+                  $("#student-list").append('<li id=' + data.students[i].id + '>' + data.students[i].username + '</li>')
+                }
+            }
+        })
+    })
+</script>
+{% endblock %}
+

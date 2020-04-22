@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}! You are already signed in!
+    <p><a href="{% url 'index' %}">Enter Qmeet</a></p>
+  <p><a href="{% url 'logout' %}">Logout</a></p>
+{% else %}
+  <p>No user is currently logged in. Please use the link below to login, or if you are new to QMeet, please use the signup link to create an account.</p>
+    <p><a href="{% url 'login' %}">Login</a></p>
+    <p><a href="{% url 'signup' %}">Signup</a></p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{%  block content %}
+
+    <form id="create-event-form" method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td><label>Event name:</label></td> <td><input name="event-name" type="text"></td>
+            </tr>
+            <tr>
+                <td><label>Start date:</label></td> <td><input name="start-date" type= "datetime-local"></td>
+            </tr>
+            <tr>
+                <td><label>End date:</label></td> <td><input name="end-date" type= "datetime-local"></td>
+            </tr>
+            <tr>
+                <td><label>Number of participants:</label></td> <td><input name="capacity" type= "number"></td>
+            </tr>
+
+            <!--<div><<label>Add an image (optional):</label><input name="event-image" type="image"></div>-->
+        </table>
+        <button type="submit" id="create-event-btn">CREATE EVENT</button>
+    </form>
+
+   <script>
+    $(function() {
+        $("#create-event-btn").click(function(e) {
+            alert("starting");
+            e.preventDefault();
+                $.ajax({
+                    url: "{% url 'new event' %}",
+                    method: "POST",
+                    data: $("#create-event-form").serializeArray(),
+                    //data: {"event_id": "1", "csrfmiddlewaretoken" : "{{csrf_token}}"},
+                    success: function(data) {
+                        alert("Event created successfully!");
+                    }
+                })
+
+        })
+    })
+    </script>
+{% endblock %}
