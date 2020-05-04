@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>New post</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" id="create-student-profile-btn">Create student profile</button>
+    </form>
+
+    <script>
+        $(function() {
+            $("#create-student-profile-btn").click(function(){
+                $.ajax({
+                    url: {% url 'create student profile' %},
+                    method: "POST",
+
+                })
+            })
+        })
+    </script>
+{% endblock %}
