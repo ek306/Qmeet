@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {%  block content %}
 
-    <form id="create-event-form" method="POST">
+    <form id="create-event-form" method="POST" >
         {% csrf_token %}
         <table>
             <tr>
@@ -19,25 +19,21 @@
 
             <!--<div><<label>Add an image (optional):</label><input name="event-image" type="image"></div>-->
         </table>
-        <button type="submit" id="create-event-btn">CREATE EVENT</button>
+        <input type="button" id="create-event-btn">CREATE EVENT</input>
     </form>
 
    <script>
-    $(function() {
-        $("#create-event-btn").click(function(e) {
-            alert("starting");
-            e.preventDefault();
+       $(document).ready(function() {
+            $("#create-event-btn").click(function() {
                 $.ajax({
                     url: "{% url 'new event' %}",
                     method: "POST",
                     data: $("#create-event-form").serializeArray(),
-                    //data: {"event_id": "1", "csrfmiddlewaretoken" : "{{csrf_token}}"},
                     success: function(data) {
-                        alert("Event created successfully!");
                     }
-                })
+                });
+            });
+       });
 
-        })
-    })
     </script>
 {% endblock %}

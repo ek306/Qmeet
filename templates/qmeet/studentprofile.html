@@ -2,21 +2,25 @@
 
 {% block content %}
     <h2>New post</h2>
-    <form method="POST">
+    <form id="create-student-profile-form" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" id="create-student-profile-btn">Create student profile</button>
+        <button type="button" id="create-student-profile-btn">Create student profile</button>
     </form>
 
     <script>
-        $(function() {
-            $("#create-student-profile-btn").click(function(){
+        $(document).ready(function() {
+            $("#create-student-profile-btn").click(function() {
                 $.ajax({
-                    url: {% url 'create student profile' %},
+                    url: "{% url 'new student profile' %}",
                     method: "POST",
-
-                })
-            })
-        })
+                    data: $("#create-student-profile-form").serializeArray(),
+                    success: function(data) {
+                        alert("Event created successfully!");
+                    }
+                });
+            });
+       });
     </script>
+
 {% endblock %}
