@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from rest_framework.renderers import JSONRenderer
 from .forms import StudentCreationForm, StudentCategoriesForm
-from .models import Student, Event, StudentProfile, StudentCategories
+from .models import Student, Event, StudentProfile, StudentCategories, StudentProfileYear
 from django.core import serializers
 from rest_framework.response import Response
 from django.http import HttpResponse, JsonResponse
@@ -33,12 +33,16 @@ def new_student_profile(request):
             student = user
             bio = form.cleaned_data['bio']
             location = form.cleaned_data['location']
-            student_profile = StudentProfile(student=student, bio=bio, location=location)  # , display_picture=display_picture)
+            course = form.cleaned_data['course']
+            year = form.cleaned_data['year']
+            student_profile = StudentProfile(student=student, course=course, bio=bio, location=location)  # , display_picture=display_picture)
             student_profile.save()
             for categories in form.cleaned_data['categories']:
                 student_categories = StudentCategories(student_profile=student_profile, categories=categories)
                 student_categories.save()
-            #display_picture = form.cleaned_data['display_picture']
+            student_profile_year = StudentProfileYear(student_profile=student_profile, year=year)
+            student_profile_year.save()
+            # display_picture = form.cleaned_data['display_picture']
             return HttpResponse("Profile created")
 
 @login_required()

@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from datetime import datetime
-from .models import Student, Categories, StudentCategories
+from .models import Student, Categories, StudentCategories, StudentProfile, AcademicYear
 
 
 class StudentCreationForm(UserCreationForm):
@@ -19,7 +19,10 @@ class StudentCategoriesForm(ModelForm):
         widget=forms.CheckboxSelectMultiple,
         queryset=Categories.objects.all()
     )
+    year = forms.ModelChoiceField(
+        queryset=AcademicYear.objects.all()
+    )
 
     class Meta:
-        model = StudentCategories
-        fields = ['bio', 'location', 'categories']
+        model = StudentProfile
+        fields = ['course', 'year', 'bio', 'location', 'categories']

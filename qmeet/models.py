@@ -2,6 +2,36 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, AbstractBaseUser, UserManager, BaseUserManager, PermissionsMixin
 
 
+class Department(models.Model):
+    name = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+
+class Course(models.Model):
+    name = models.TextField()
+    description = models.TextField()
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+
+class Module(models.Model):
+    name = models.TextField()
+    code = models.CharField(max_length=20)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+
+class CourseModules(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    module = models.ForeignKey(Module, on_delete=models.CASCADE)
+
+
 class Student(AbstractUser):
     pass
     # add additional fields in here
@@ -12,6 +42,7 @@ class Student(AbstractUser):
 
 
 class Event(models.Model):
+    host = models.ForeignKey(Student, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
@@ -34,13 +65,29 @@ class EventCategories(models.Model):
     categories = models.ForeignKey(Categories, on_delete=models.CASCADE)
 
 
+class AcademicYear(models.Model):
+    year = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.year
+
+
 class StudentProfile(models.Model):
     student = models.OneToOneField(Student, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
     location = models.TextField(max_length=30, blank=True)
     #display_picture = models.ImageField(upload_to='profile_images', blank=True)
+
+    def __str__(self):
+        return self.student.username
 
 
 class StudentCategories(models.Model):
     student_profile = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
     categories = models.ForeignKey(Categories, on_delete=models.CASCADE)
+
+
+class StudentProfileYear(models.Model):
+    student_profile = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
+    year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
