@@ -3,8 +3,8 @@ from django.views import generic
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from rest_framework.renderers import JSONRenderer
-from .forms import StudentCreationForm, StudentCategoriesForm
-from .models import Student, Event, StudentProfile, StudentCategories, StudentProfileYear
+from .forms import StudentCreationForm, StudentCategoriesForm, EventCategoriesForm
+from .models import Student, Event, StudentProfile, StudentCategories, EventCategories, StudentProfileYear
 from django.core import serializers
 from rest_framework.response import Response
 from django.http import HttpResponse, JsonResponse
@@ -52,23 +52,28 @@ def index(request):
 
 @login_required
 def createevent(request):
-    return render(request, 'qmeet/createevent.html')
+    temp = request.GET['event_id']
+    form = EventCategoriesForm()
+    return render(request, 'qmeet/createevent.html', {'form': form})
 
 
 def new_event(request):
-    #if request.method == 'POST':
-    #    try:
-            event_name = request.POST['event-name']
+    user = request.user
+    if request.method == "POST":
+        form = EventCategoriesForm(request.POST)
+        if form.is_valid():
+            student = user
+            title = form.cleaned_data['title']
+            location = form.cleaned_data['location']
             start_date = request.POST['start-date']
             end_date = request.POST['end-date']
-            capacity = request.POST['capacity']
-            #event_image = request.POST['event-image']
-            event = Event(title=event_name, start_date=start_date, end_date=end_date, capacity=capacity)#, image=event_image)
+            capacity = form.cleaned_data['capacity']
+            event = Event(host=student, title=title, location=location, start_date=start_date, end_date=end_date, capacity=capacity)
             event.save()
-            return render(request, 'index.html')
-    #    except:
-    #        return HttpResponse("Event failed to create")
-
+            for categories in form.cleaned_data['categories']:
+                event_categories = EventCategories(event=event, categories=categories)
+                event_categories.save()
+            return HttpResponse("Event created, and event categories created")
 
 @login_required()
 def students(request):
@@ -92,18 +97,24 @@ class EventListView(generics.ListAPIView):
 
 @login_required()
 def get_all_students(request):
-    students = Student.objects.all().values()
+    student_list = Student.objects.all().values()
     return JsonResponse({
-        'students': list(students)
+        'students': list(student_list)
     })
 
 
 @login_required()
 def get_all_events(request):
-    events = Event.objects.all().values()
-    # serializer = EventSerializer(event)
-    # serializer_data = serializer.data
-    # json = JSONRenderer().render(serializer_data).decode()
+    event_list = Event.objects.all().values()
     return JsonResponse({
-        'events': list(events)
+        'events': list(event_list)
     })
+
+
+@login_required()
+def get_event(request):
+    temp = request.GET['event_id']
+    event = Event.objects.get(id=temp)
+    context = {'event': event}
+    return render(request, 'qmeet/getstudentprofile.html', context)
+

@@ -2,7 +2,7 @@
 {% block content %}
     <p>This page shows a list of all events</p>
     <div>
-        <ul id="student-list">
+        <ul id="event-list">
 
         </ul>
     </div>
@@ -16,8 +16,7 @@
             success: function(data) {
                 var i;
                 for (i=0; i<data.events.length; i++) {
-                  alert(data.events[i].username);
-                  $("#student-list").append('<li id=' + data.events[i].id + '>' + data.events[i].username + '</li>')
+                  $("#event-list").append('<li id=' + data.events[i].id + '>' + '<a href="{% url 'get event' %}?event_id=' + data.events[i].id + '">' + data.events[i].title + '</a></li>')
                 }
             }
         })

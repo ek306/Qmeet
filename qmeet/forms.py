@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from datetime import datetime
-from .models import Student, Categories, StudentCategories, StudentProfile, AcademicYear
+from .models import Student, Event, Categories, StudentCategories, StudentProfile, AcademicYear, Module, CourseModules
 
 
 class StudentCreationForm(UserCreationForm):
@@ -26,3 +26,26 @@ class StudentCategoriesForm(ModelForm):
     class Meta:
         model = StudentProfile
         fields = ['course', 'year', 'bio', 'location', 'categories']
+
+
+class EventCategoriesForm(ModelForm):
+    categories = forms.ModelMultipleChoiceField(
+        widget=forms.CheckboxSelectMultiple,
+        queryset=Categories.objects.all()
+    )
+
+    class Meta:
+        model = Event
+        fields = ['title', 'location', 'capacity', 'categories']
+
+
+#class ModulesForm(ModelForm):
+#    module_one = forms.ModelChoiceField(
+#        queryset=Module.objects.all()
+#    )
+
+#    def __init__(self, *args, **kwargs):
+#        user = kwargs.pop('user', None)
+#        super(ModulesForm, self).__init__(*args, **kwargs)
+#        if user is not None:
+#            self.fields['module_one'].queryset = Module.objects.filter(course = user.StudentProfile.course)

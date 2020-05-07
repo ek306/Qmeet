@@ -1,26 +1,39 @@
 {% extends 'base.html' %}
 {%  block content %}
 
-    <form id="create-event-form" method="POST" >
+    <h2>CREATE NEW EVENT</h2>
+    <form id="create-event-form" method="POST">
         {% csrf_token %}
+        {{ form.as_p }}
+        <table>
+            <tr>
+                <td><label>Start date:</label></td> <td><input name="start-date" type="datetime-local"></td>
+            </tr>
+            <tr>
+                <td><label>End date:</label></td> <td><input name="end-date" type="datetime-local"></td>
+            </tr>
+        </table>
+        <button type="button" id="create-event-btn">Create event</button>
+    </form>
+
+<!--    <form id="create-event-form" method="POST" >
+        PUT CSRF TOKEN HERE
         <table>
             <tr>
                 <td><label>Event name:</label></td> <td><input name="event-name" type="text"></td>
             </tr>
             <tr>
-                <td><label>Start date:</label></td> <td><input name="start-date" type= "datetime-local"></td>
+                <td></td>
             </tr>
             <tr>
-                <td><label>End date:</label></td> <td><input name="end-date" type= "datetime-local"></td>
+                <td></td>
             </tr>
             <tr>
                 <td><label>Number of participants:</label></td> <td><input name="capacity" type= "number"></td>
             </tr>
-
-            <!--<div><<label>Add an image (optional):</label><input name="event-image" type="image"></div>-->
         </table>
         <input type="button" id="create-event-btn">CREATE EVENT</input>
-    </form>
+    </form>     -->
 
    <script>
        $(document).ready(function() {

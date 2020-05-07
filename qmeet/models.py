@@ -31,6 +31,11 @@ class CourseModules(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     module = models.ForeignKey(Module, on_delete=models.CASCADE)
 
+    def __str__(self):
+        course_name = str(self.course)
+        module_name = str(self.module)
+        return course_name + ' - ' + module_name
+
 
 class Student(AbstractUser):
     pass
@@ -44,6 +49,7 @@ class Student(AbstractUser):
 class Event(models.Model):
     host = models.ForeignKey(Student, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     capacity = models.IntegerField(default=100)
@@ -63,6 +69,11 @@ class Categories(models.Model):
 class EventCategories(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     categories = models.ForeignKey(Categories, on_delete=models.CASCADE)
+
+    def __str__(self):
+        event = str(self.event)
+        categories = str(self.categories)
+        return event + ' - ' + categories
 
 
 class AcademicYear(models.Model):
@@ -87,7 +98,17 @@ class StudentCategories(models.Model):
     student_profile = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
     categories = models.ForeignKey(Categories, on_delete=models.CASCADE)
 
+    def __str__(self):
+        student_profile = str(self.student_profile)
+        categories = str(self.categories)
+        return student_profile + ' - ' + categories
+
 
 class StudentProfileYear(models.Model):
     student_profile = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
     year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
+
+    def __str__(self):
+        student_profile = str(self.student_profile)
+        year = str(self.year)
+        return student_profile + year
