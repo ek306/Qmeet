@@ -1,12 +1,10 @@
 from django.urls import reverse_lazy
 from django.views import generic
+from django.db.models import Subquery
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from rest_framework.renderers import JSONRenderer
 from .forms import StudentCreationForm, StudentCategoriesForm, EventCategoriesForm
-from .models import Student, Event, StudentProfile, StudentCategories, EventCategories, StudentProfileYear
-from django.core import serializers
-from rest_framework.response import Response
+from .models import Student, Event, StudentProfile, StudentCategories, EventCategories, StudentProfileYear, FriendRequest
 from django.http import HttpResponse, JsonResponse
 from rest_framework import generics
 from . import serializers
@@ -52,7 +50,6 @@ def index(request):
 
 @login_required
 def createevent(request):
-    temp = request.GET['event_id']
     form = EventCategoriesForm()
     return render(request, 'qmeet/createevent.html', {'form': form})
 
@@ -97,7 +94,9 @@ class EventListView(generics.ListAPIView):
 
 @login_required()
 def get_all_students(request):
-    student_list = Student.objects.all().values()
+    user = request.user
+    students_f = StudentProfile.objects.exclude(student=user)
+    student_list = Student.objects.filter(id__in=Subquery(students_f.values('student_id'))).values()
     return JsonResponse({
         'students': list(student_list)
     })
@@ -113,8 +112,77 @@ def get_all_events(request):
 
 @login_required()
 def get_event(request):
-    temp = request.GET['event_id']
-    event = Event.objects.get(id=temp)
+    event_id = request.GET['event_id']
+    event = Event.objects.get(id=event_id)
     context = {'event': event}
+    return render(request, 'qmeet/getevent.html', context)
+
+
+@login_required()
+def get_student_profile(request):
+    student_id = request.GET['student_id']
+    student = Student.objects.get(id=student_id)
+    student_profile = StudentProfile.objects.get(student=student)
+    context = {'student_profile': student_profile}
     return render(request, 'qmeet/getstudentprofile.html', context)
 
+@login_required()
+def send_friend_request(request):
+    from_user = request.user
+    student_id = request.GET['student_id']
+    to_user = Student.objects.get(id=student_id)
+    new_request, created = FriendRequest.objects.get_or_create(to_user=to_user, from_user=from_user)
+    return HttpResponse("Friend request object created")
+
+
+@login_required()
+def get_friend_requests(request):
+    user = request.user
+    friend_requests_f = FriendRequest.objects.filter(to_user=user).values()
+    received_friend_requests = Student.objects.filter(id__in=Subquery(friend_requests_f.values('from_user_id'))).values()
+    return JsonResponse({
+        "friend_requests": list(received_friend_requests)
+    })
+
+
+@login_required()
+def get_sent_friend_requests(request):
+    user = request.user
+    friend_requests_f = FriendRequest.objects.filter(from_user=user).values()
+    sent_friend_requests = Student.objects.filter(id__in=Subquery(friend_requests_f.values('to_user_id'))).values()
+    return JsonResponse({
+        "sent_requests": list(sent_friend_requests)
+    })
+
+
+@login_required()
+def cancel_friend_request(request):
+    from_user = request.user
+    to_user_id = request.GET['student_id']
+    to_user = Student.objects.get(id=to_user_id)
+    frequest = FriendRequest.objects.get(to_user=to_user, from_user=from_user)
+    frequest.delete()
+    return HttpResponse("Successfully cancelled friend request!")
+
+@login_required()
+def accept_friend_request(request):
+    to_user = request.user
+    to_user_sp = StudentProfile.objects.get(student=to_user)
+    from_user_id = request.GET['student_id']
+    from_user = Student.objects.get(id=from_user_id)
+    from_user_sp = StudentProfile.objects.get(student=from_user)
+    to_user_sp.friends.add(from_user_sp)
+    from_user_sp.friends.add(to_user_sp)
+    frequest = FriendRequest.objects.get(to_user=to_user, from_user=from_user)
+    frequest.delete()
+    return HttpResponse("Successfully accepted the request!")
+
+
+@login_required()
+def reject_friend_request(request):
+    to_user = request.user
+    from_user_id = request.GET['student_id']
+    from_user = Student.objects.get(id=from_user_id)
+    frequest = FriendRequest.objects.get(to_user=to_user, from_user=from_user)
+    frequest.delete()
+    return HttpResponse("Successfully rejected the request!")

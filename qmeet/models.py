@@ -53,6 +53,7 @@ class Event(models.Model):
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     capacity = models.IntegerField(default=100)
+    attendees = models.ManyToManyField(Student, blank=True)
     # image = models.ImageField(upload_to='event_images', blank=True)
 
     def __str__(self):
@@ -64,6 +65,16 @@ class Categories(models.Model):
 
     def __str__(self):
         return self.category
+
+
+class StudentEvents(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+
+    def __str__(self):
+        student = str(self.student)
+        event = str(self.event)
+        return student + ' - ' + event
 
 
 class EventCategories(models.Model):
@@ -88,10 +99,21 @@ class StudentProfile(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
     location = models.TextField(max_length=30, blank=True)
+    friends = models.ManyToManyField("StudentProfile", blank=True)
     #display_picture = models.ImageField(upload_to='profile_images', blank=True)
 
     def __str__(self):
         return self.student.username
+
+
+class FriendRequest(models.Model):
+    to_user = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='to_user')
+    from_user = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='from_user')
+
+    def __str__(self):
+        to_user = str(self.to_user)
+        from_user = str(self.from_user)
+        return 'from ' + from_user + ' to ' + to_user
 
 
 class StudentCategories(models.Model):

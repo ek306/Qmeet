@@ -1,1 +1,33 @@
 {% extends 'base.html' %}
+{% block content %}
+    <p>Here is the information for {{ student_profile.student.username }}</p>
+
+    <p>Bio: {{ student_profile.bio }}</p>
+
+    <p>Location: {{ student_profile.location }}</p>
+
+    <p>Studying: {{ student_profile.course }}</p>
+
+    <p><a href="{% url 'send friend request' %}?student_id={{ student_profile.student.id }}">Add friend</a></p>
+
+    <p>{{ user.username }}</p>
+
+<!--    <script>
+        alert("in script")
+        $(document).ready(function() {
+            $("#send-friend-request-btn").click(function() {
+                $.ajax({
+                    url : "{% url "send friend request" %}",
+                    type : "POST",
+                    data: {
+                        student_id :{{ student_profile.student.id }},
+                        csrfToken: '{{ csrf_token }}'},
+                    dataType: "json",
+                    success: function(data) {
+                        alert("Sent friend request!")
+                    }
+                })
+            })
+        })
+    </script>  -->
+{% endblock %}

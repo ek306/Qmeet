@@ -4,7 +4,56 @@
 {% endblock %}
 
 {% block content %}
-    <p>Welcome to index</p>
+    <p>Welcome to index {{ user.username }}</p>
     <p><a href="{% url 'create event' %}">Create event</a></p>
-    <p><a href="{% url 'student profile' %}">Student profile</a></p>
+    <p><a href="{% url 'student profile' %}">Create student profile</a></p>
+    <p><a href="{% url 'students' %}"> View all students</a></p>
+    <p><a href="{% url 'events' %}">View all events</a></p>
+
+
+    <div id="received-friend-requests-div">
+        <ul id="received-friend-requests-list">
+
+        </ul>
+    </div>
+
+    <div id="sent-friend-requests-div">
+        <ul id="sent-friend-requests-list">
+
+        </ul>
+    </div>
+
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            url: "{% url 'get friend requests' %}",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                var i;
+                for(i=0; i<data.friend_requests.length; i++) {
+                    $("#received-friend-requests-list").append('<li id=' + data.friend_requests[i].id + '>' + data.friend_requests[i].username + " wants to be your friend!" +
+                        '<a href= "{% url 'accept friend request' %}?student_id=' + data.friend_requests[i].id + '">' + "Accept friend request" + '</a>' + '      ' +
+                        '<a href= "{% url 'reject friend request' %}?student_id=' + data.friend_requests[i].id + '">' + "Reject friend request" + '</a>' + '</li>')
+                }
+            }
+        })
+    })
+
+    $(document).ready(function () {
+        $.ajax({
+            url: "{% url 'get sent friend requests' %}",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                var i;
+                for(i=0; data.sent_requests.length; i++) {
+                    $("#sent-friend-requests-list").append('<li id=' + data.sent_requests[i].id + '>' + data.sent_requests[i].username + " friend request is pending." +
+                        '<a href= "{% url 'cancel friend request' %}?student_id=' + data.sent_requests[i].id + '">' + "Cancel friend request" + '</a>' + '</li>')
+                }
+            }
+        })
+    })
+</script>
+
 {% endblock %}

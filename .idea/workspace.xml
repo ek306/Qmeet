@@ -2,21 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bced4a5-de5e-4f4a-944a-e0a4a234e65b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/qmeet/getstudentprofile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/qmeet/setmodules.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/qmeet/getevent.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0002_auto_20200505_0244.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0003_auto_20200505_0247.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmeet/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qmeet/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qmeet/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qmeet/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/qmeet/createevent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/createevent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/qmeet/events.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/events.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/qmeet/studentprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/studentprofile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/getstudentprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/getstudentprofile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/students.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/students.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +46,13 @@
         <item name="db" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="db" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
+        <item name="qmeet_studentprofile: table" type="3d80ac25:SqliteImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -162,7 +165,8 @@
       <workItem from="1587073150170" duration="19869000" />
       <workItem from="1587327524973" duration="68518000" />
       <workItem from="1587836385334" duration="5429000" />
-      <workItem from="1588453956165" duration="57483000" />
+      <workItem from="1588453956165" duration="95909000" />
+      <workItem from="1589048203896" duration="16436000" />
     </task>
     <servers />
   </component>
@@ -187,13 +191,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/qmeet/views.py</url>
-          <line>55</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/qmeet/views.py</url>
-          <line>118</line>
-          <option name="timeStamp" value="22" />
+          <line>168</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

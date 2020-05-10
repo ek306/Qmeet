@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <p>Here is the information for {{ event.title }}</p>
+
+    <p>The event is being hosted by {{ event.host.username }}</p>
+
+    <p>The event starts at{{ event.start_date }}</p>
+
+    <p>The event ends at {{ event.end_date }}</p>
+
+    <p>The capacity for the event is {{ event.capacity }}</p>
+
+    {% if event.capacity == 100 %}
+        <p>This event has capacity of exactly 100 people!</p>
+    {% endif %}
+
+    <button type="button"> Join event </button>
+
+    <script>
+
+
+    </script>
+
+{% endblock %}
