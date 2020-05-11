@@ -53,7 +53,7 @@ class Event(models.Model):
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     capacity = models.IntegerField(default=100)
-    attendees = models.ManyToManyField(Student, blank=True)
+    attendees = models.ManyToManyField(Student, blank=True, related_name="attendees")
     # image = models.ImageField(upload_to='event_images', blank=True)
 
     def __str__(self):

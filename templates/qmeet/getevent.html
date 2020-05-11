@@ -15,11 +15,23 @@
         <p>This event has capacity of exactly 100 people!</p>
     {% endif %}
 
-    <button type="button"> Join event </button>
-
-    <script>
+     <button type="button" id="join-event-button"><a href="{% url "join event" %}?event_id={{ event.id }}">Join event</a></button>
 
 
-    </script>
+<!--    <script>
+        var token = {% csrf_token %}
+        $("#join-event-button").click(function () {
+            $.ajax({
+                headers: {"X-CSRFToken": token},
+                url: "{% url 'join event' %}",
+                type: "POST",
+                data: {event_id: {{ event.id }}},
+                success: function (data) {
+                    alert("SUCCESSFUL JOIN");
+                }
+            })
+        })
+
+    </script> -->
 
 {% endblock %}

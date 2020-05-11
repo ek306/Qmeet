@@ -8,6 +8,7 @@ from .models import Student, Event, StudentProfile, StudentCategories, EventCate
 from django.http import HttpResponse, JsonResponse
 from rest_framework import generics
 from . import serializers
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 
 class SignUp(generic.CreateView):
@@ -186,3 +187,16 @@ def reject_friend_request(request):
     frequest = FriendRequest.objects.get(to_user=to_user, from_user=from_user)
     frequest.delete()
     return HttpResponse("Successfully rejected the request!")
+
+
+@login_required()
+def join_event(request):
+    user = request.user
+    event_id = request.GET['event_id']
+    event = Event.objects.get(id=event_id)
+    for t in event.attendees.all():
+        if t == user:
+            return HttpResponse("Already joined!")
+
+    event.attendees.add(user)
+    return HttpResponse("You have joined the event!")

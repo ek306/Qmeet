@@ -23,4 +23,6 @@ urlpatterns = [
     path('get_sent_friend_requests', views.get_sent_friend_requests, name='get sent friend requests'),
     path('accept_friend_request', views.accept_friend_request, name='accept friend request'),
     path('reject_friend_request', views.reject_friend_request, name='reject friend request'),
+    path('join_event', views.join_event, name='join event'),
+
 ]
