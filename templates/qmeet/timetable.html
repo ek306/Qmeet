@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% load mathfilters %}
+{% load utils %}
+
+{%  block content %}
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        td,
+        th {
+            /*display: inline-block;*/
+            padding: 10px 10px;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .timetable-day-header{
+            border: solid rgb(100, 100, 100);
+            height: 30px;
+            width: 100px;
+        }
+
+        .timetable-row-time{
+            border: solid rgb(100, 100, 100);
+            height: 50px;
+            width: 100px;
+        }
+
+        .study_module1{
+            background-color: #f5e79e;
+        }
+
+        .study_module2{
+            background-color: #f5e79e;
+            row-span: 2;
+        }
+    </style>
+
+    <table>
+        <colgroup>
+            <col>
+            <col span="6" class="timetable-header">
+        </colgroup>
+        <tr>
+            <td></td>
+            <th class="timetable-day-header">MON</th>
+            <th class="timetable-day-header">TUES</th>
+            <th class="timetable-day-header">WED</th>
+            <th class="timetable-day-header">THURS</th>
+            <th class="timetable-day-header">FRI</th>
+        </tr>
+        <tr>
+            {% for i in 8|iterations %}
+                {% if i < timetable.semester_modules|length %}
+                    {% with mod=timetable.semester_modules|index:i %}
+                        <tr>
+                            <th class="timetable-row-time">{{ forloop.counter|add:8 }} - {{ forloop.counter|add:9 }}</th>
+                            {% if mod.module_start_time == i|add:9 and mod.day_of_week == 'Monday' %}
+                                <td id="mon-{{ i|add:9 }}">{{ mod.module_start_time }} found time</td>
+                            {% else %}
+                                <td id="mon-{{ i|add:9 }}">{{mod.day_of_week}} Monday</td>
+                            {% endif %}
+
+                            {% if mod.module_start_time == i|add:9 and mod.day_of_week == 'Tuesday' %}
+                                <td id="tue-{{ i|add:9 }}">{{ mod.module_start_time }} found time</td>
+                            {% else %}
+                                <td id="tue-{{ i|add:9 }}">{{mod.day_of_week}} Tuesday</td>
+                            {% endif %}
+
+                            {% if mod.module_start_time == i|add:9 and mod.day_of_week == 'Wednesday' %}
+                                <td id="wed-{{ i|add:9 }}">{{ mod.module_start_time }} found time</td>
+                            {% else %}
+                                <td id="wed-{{ i|add:9 }}">{{mod.day_of_week}} </td>
+                            {% endif %}
+
+                            {% if mod.module_start_time == i|add:9 and mod.day_of_week == 'Thursday' %}
+                                <td id="thr-{{ i|add:9 }}">{{ mod.module_start_time }} found time</td>
+                            {% else %}
+                                <td id="thr-{{ i|add:9 }}">{{mod.day_of_week}} Thursday</td>
+                            {% endif %}
+
+                            {% if mod.module_start_time == i|add:9 and mod.day_of_week == 'Friday' %}
+                                <td id="fri-{{ i|add:9 }}">{{ mod.module_start_time }} found time</td>
+                            {% else %}
+                                <td id="fri-{{ i|add:9 }}">{{mod.day_of_week}} Friday</td>
+                            {% endif %}
+                        </tr>
+                    {% endwith %}
+                {% else %}
+                    <tr>
+                        <th class="timetable-row-time">{{ forloop.counter|add:8 }} - {{ forloop.counter|add:9 }}</th>
+                        <td id="mon-{{ i|add:9 }}"></td>
+                        <td id="tue-{{ i|add:9 }}"></td>
+                        <td id="wed-{{ i|add:9 }}"></td>
+                        <td id="thr-{{ i|add:9 }}"></td>
+                        <td id="fri-{{ i|add:9 }}"></td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    </table>
+{% endblock %}
