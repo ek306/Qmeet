@@ -1,15 +1,33 @@
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from rest_framework.renderers import JSONRenderer
+from rest_framework import generics
+
+from . import serializers
 from .forms import StudentCreationForm, StudentCategoriesForm, EventCategoriesForm
 from .models import Student, Event, StudentProfile, StudentCategories, EventCategories, StudentProfileYear
-from django.core import serializers
-from rest_framework.response import Response
-from django.http import HttpResponse, JsonResponse
-from rest_framework import generics
-from . import serializers
+
+
+class Timetable:
+
+    def __init__(self):
+        self.semester_modules = []
+
+    def add_module(self, module):
+        self.semester_modules.append(module)
+
+
+class SemesterModule:
+
+    def __init__(self, semester_name, module_name, start_time, end_time, academic_year, day_of_week):
+        self.semester_name = semester_name
+        self.module_name = module_name
+        self.day_of_week = day_of_week
+        self.module_start_time = start_time
+        self.module_end_time = end_time
+        self.academic_year = academic_year
 
 
 class SignUp(generic.CreateView):
@@ -117,4 +135,22 @@ def get_event(request):
     event = Event.objects.get(id=temp)
     context = {'event': event}
     return render(request, 'qmeet/getstudentprofile.html', context)
+
+
+@login_required()
+def get_timetable(request):
+    timetable = Timetable()
+    semester_module = SemesterModule("S1", "Introduction to Python", 9, 11, 2019, "Monday")
+    timetable.add_module(semester_module)
+    semester_module = SemesterModule("S1", "Operating Systems", 11, 12, 2019, "Wednesday")
+    timetable.add_module(semester_module)
+    semester_module = SemesterModule("S1", "Introduction to Python (Lab)", 14, 15, 2019, "Monday")
+    timetable.add_module(semester_module)
+    semester_module = SemesterModule("S1", "Databases 101", 14, 16, 2019, "Thursday")
+    timetable.add_module(semester_module)
+    semester_module = SemesterModule("S1", "Databases 101 (Lab)", 13, 14, 2019, "Friday")
+    timetable.add_module(semester_module)
+    context = {'timetable': timetable}
+    return render(request, 'qmeet/timetable.html', context)
+
 
