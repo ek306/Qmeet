@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student, Event, Categories, StudentCategories, EventCategories, StudentProfile, Course, CourseModules, Department, Module, AcademicYear, StudentProfileYear
+from .models import Student, Event, Categories, StudentCategories, EventCategories, StudentProfile, Course, CourseModules, Department, Module, AcademicYear, StudentProfileYear, FriendRequest
 
 admin.site.register(Student)
 admin.site.register(Event)
@@ -13,3 +13,4 @@ admin.site.register(Module)
 admin.site.register(CourseModules)
 admin.site.register(AcademicYear)
 admin.site.register(StudentProfileYear)
+admin.site.register(FriendRequest)

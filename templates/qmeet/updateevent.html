@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h2>CREATE NEW EVENT</h2>
+    <form id="update-event-form" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <table>
+            <tr>
+                <td><label>Start date:</label></td> <td><input name="start-date" type="datetime-local"></td>
+            </tr>
+            <tr>
+                <td><label>End date:</label></td> <td><input name="end-date" type="datetime-local"></td>
+            </tr>
+        </table>
+        <button type="button" id="update-event-btn">Create event</button>
+    </form>
+
+    <script>
+    $(document).ready(function() {
+        $("#update-event-btn").click(function() {
+            $.ajax({
+                url: "{% url 'update event' %}?event_id={{ event.id }}",
+                type: "POST",
+                data: $("#update-event-form").serializeArray(),
+                success: function (data) {
+
+                }
+            })
+        })
+
+    })
+    </script>
+
+{% endblock %}

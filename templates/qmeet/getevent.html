@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <p>Here is the information for {{ event.title }}</p>
+
+    <p>The event is being hosted by {{ event.host.username }}</p>
+
+    <p>The event starts at{{ event.start_date }}</p>
+
+    <p>The event ends at {{ event.end_date }}</p>
+
+    <p>The capacity for the event is {{ event.capacity }}</p>
+
+    {% if event.capacity == 100 %}
+        <p>This event has capacity of exactly 100 people!</p>
+    {% endif %}
+
+    <div id="join-event-div">
+
+    </div>
+
+
+<script>
+
+    $(document).ready(function() {
+        $.ajax({
+            url: "{% url 'compare user and student profile' %}?student_profile_id={{ event.host.studentprofile.id }}",
+            type: "GET",
+            success: function (data) {
+                if (data.context == true) {
+                    $("#join-event-div").append('<button type="button" id="join-event-button"><a href="{% url "update event page" %}?event_id={{ event.id }}">Update event</a></button>')
+                }
+
+                else {
+                    $("#join-event-div").append('<button type="button" id="join-event-button"><a href="{% url "join event" %}?event_id={{ event.id }}">Join event</a></button>')
+                }
+            }
+        })
+    })
+
+</script>
+
+{% endblock %}
