@@ -15,23 +15,29 @@
         <p>This event has capacity of exactly 100 people!</p>
     {% endif %}
 
-     <button type="button" id="join-event-button"><a href="{% url "join event" %}?event_id={{ event.id }}">Join event</a></button>
+    <div id="join-event-div">
+
+    </div>
 
 
-<!--    <script>
-        var token = {% csrf_token %}
-        $("#join-event-button").click(function () {
-            $.ajax({
-                headers: {"X-CSRFToken": token},
-                url: "{% url 'join event' %}",
-                type: "POST",
-                data: {event_id: {{ event.id }}},
-                success: function (data) {
-                    alert("SUCCESSFUL JOIN");
+<script>
+
+    $(document).ready(function() {
+        $.ajax({
+            url: "{% url 'compare user and student profile' %}?student_profile_id={{ event.host.studentprofile.id }}",
+            type: "GET",
+            success: function (data) {
+                if (data.context == true) {
+                    $("#join-event-div").append('<button type="button" id="join-event-button"><a href="{% url "update event page" %}?event_id={{ event.id }}">Update event</a></button>')
                 }
-            })
-        })
 
-    </script> -->
+                else {
+                    $("#join-event-div").append('<button type="button" id="join-event-button"><a href="{% url "join event" %}?event_id={{ event.id }}">Join event</a></button>')
+                }
+            }
+        })
+    })
+
+</script>
 
 {% endblock %}

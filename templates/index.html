@@ -5,9 +5,15 @@
 
 {% block content %}
     <p>Welcome to index {{ user.username }}</p>
+
+    <div id="student-profile-div">
+
+    </div>
+
     <p><a href="{% url 'create event' %}">Create event</a></p>
-    <p><a href="{% url 'student profile' %}">Create student profile</a></p>
+
     <p><a href="{% url 'students' %}"> View all students</a></p>
+
     <p><a href="{% url 'events' %}">View all events</a></p>
 
 
@@ -23,7 +29,31 @@
         </ul>
     </div>
 
+    <div id="host-events-div">
+    <p>Events you are hosting:</p>
+        <ul id="host-events-list">
+
+        </ul>
+    </div>
+
 <script>
+
+    $(document).ready(function() {
+        $.ajax({
+            url: "{% url 'check student profile exists' %}",
+            type: "GET",
+            success: function (data) {
+                if(data.profile_exists == true) {
+                    $("#student-profile-div").append('<p><a href="{% url 'get student profile' %}?student_id={{ user.id }}">View student profile</a></p>')
+                }
+
+                else if(data.profile_exists == false){
+                    $("#student-profile-div").append('<p><a href="{% url 'create student profile' %}">Create student profile</a></p>')
+                }
+            }
+        })
+    })
+
     $(document).ready(function() {
         $.ajax({
             url: "{% url 'get friend requests' %}",
@@ -50,6 +80,20 @@
                 for(i=0; data.sent_requests.length; i++) {
                     $("#sent-friend-requests-list").append('<li id=' + data.sent_requests[i].id + '>' + data.sent_requests[i].username + " friend request is pending." +
                         '<a href= "{% url 'cancel friend request' %}?student_id=' + data.sent_requests[i].id + '">' + "Cancel friend request" + '</a>' + '</li>')
+                }
+            }
+        })
+    })
+
+    $(document).ready(function() {
+        $.ajax({
+            url: "{% url 'get hosted events' %}",
+            type: "GET",
+            success: function (data) {
+                var i;
+                for(i=0; data.hosted_events.length; i++) {
+                    $("#host-events-list").append('<li id=' + data.hosted_events[i].id + '>' + '<a href="{% url 'get event' %}?event_id=' + data.hosted_events[i].id + '">'
+                        + data.hosted_events[i].title + '</a>' + '</li>')
                 }
             }
         })

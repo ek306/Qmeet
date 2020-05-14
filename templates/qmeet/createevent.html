@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{%  block content %}
+{% block content %}
 
     <h2>CREATE NEW EVENT</h2>
     <form id="create-event-form" method="POST">
@@ -15,25 +15,6 @@
         </table>
         <button type="button" id="create-event-btn">Create event</button>
     </form>
-
-<!--    <form id="create-event-form" method="POST" >
-        PUT CSRF TOKEN HERE
-        <table>
-            <tr>
-                <td><label>Event name:</label></td> <td><input name="event-name" type="text"></td>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-            <tr>
-                <td><label>Number of participants:</label></td> <td><input name="capacity" type= "number"></td>
-            </tr>
-        </table>
-        <input type="button" id="create-event-btn">CREATE EVENT</input>
-    </form>     -->
 
    <script>
        $(document).ready(function() {
