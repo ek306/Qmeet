@@ -4,6 +4,14 @@
    Author's custom styles
    ========================================================================== */
 
+#timetable div {
+  width: 16%;
+  height: 80px;
+  padding: 20px;
+  border: 8px solid red;
+  background: white;
+}
+
 
 
 
