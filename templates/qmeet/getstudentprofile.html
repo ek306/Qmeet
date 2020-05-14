@@ -1,1 +1,57 @@
 {% extends 'base.html' %}
+{% block content %}
+    <p>Here is the information for {{ student_profile.student.username }}</p>
+
+    <p>Bio: {{ student_profile.bio }}</p>
+
+    <p>Location: {{ student_profile.location }}</p>
+
+    <p>Studying: {{ student_profile.course }}</p>
+
+    <div>
+        <p>{{ student_profile.student.username }} is particularly interested in the following categories</p>
+        <ul id="student-categories">
+
+        </ul>
+    </div>
+
+    <div id="add-friend-div">
+
+    </div>
+
+
+
+<script>
+
+    $(document).ready(function() {
+        $.ajax({
+            url: "{% url 'get student categories' %}?student_profile_id={{ student_profile.id }}",
+            type: "GET",
+            success: function (data) {
+                var i;
+                for(i=0; data.categories.length; i++) {
+                    $("#student-categories").append('<li>' + data.categories[i].category + '</li>')
+                }
+            }
+        })
+    })
+
+    $(document).ready(function() {
+        $.ajax({
+            url: "{% url 'compare user and student profile' %}?student_profile_id={{ student_profile.id }}",
+            type: "GET",
+            success: function (data) {
+                if(data.context == true) {
+                    $("#add-friend-div").append('<p><a href="{% url 'create student profile' %}">Update student profile</a></p>')
+                }
+                else {
+                    $("#add-friend-div").append('<p><a href="{% url 'send friend request' %}?student_id={{ student_profile.student.id }}">Add friend</a></p>')
+                }
+            }
+        })
+    })
+
+
+</script>
+
+{% endblock %}

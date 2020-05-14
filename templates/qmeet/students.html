@@ -16,8 +16,7 @@
             success: function(data) {
                 var i;
                 for (i=0; i<data.students.length; i++) {
-                  alert(data.students[i].username);
-                  $("#student-list").append('<li id=' + data.students[i].id + '>' + data.students[i].username + '</li>')
+                  $("#student-list").append('<li id=' + data.students[i].id + '>' + '<a href="{% url 'get student profile' %}?student_id=' + data.students[i].id + '">' + data.students[i].username + '</a>' + '<button type="button">Click Me!</button>' + '</li>')
                 }
             }
         })
