@@ -78,13 +78,11 @@ def compose(request, recipient=None, form_class=ComposeForm,
         ``recipient_filter``: a function which receives a user object and
                               returns a boolean wether it is an allowed
                               recipient or not
-
     Passing GET parameter ``subject`` to the view allows pre-filling the
     subject field of the form.
     """
     if request.method == "POST":
         sender = request.user
-        recipient_filter = Student.objects.exclude(id=sender.id)
         form = form_class(request.POST, recipient_filter=recipient_filter)
         if form.is_valid():
             form.save(sender=request.user)

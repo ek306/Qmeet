@@ -1,13 +1,15 @@
+from django.contrib.auth.decorators import login_required
+from django.db import connection
+from django.db.models import Subquery
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
-from django.db.models import Subquery
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from .forms import StudentCreationForm, StudentCategoriesForm, EventCategoriesForm
-from .models import Student, Event, StudentProfile, StudentCategories, EventCategories, StudentProfileYear, FriendRequest, Categories
-from django.http import HttpResponse, JsonResponse
 from rest_framework import generics
 from . import serializers
+from .forms import StudentCreationForm, StudentCategoriesForm, EventCategoriesForm, FilterStudentsForm, FilterEventsForm
+from .models import Student, Event, StudentProfile, StudentCategories, StudentEvents, EventCategories, \
+    StudentProfileYear, FriendRequest, Categories
 
 
 class SignUp(generic.CreateView):
@@ -28,8 +30,16 @@ def get_student_by_id(id):
 
 @login_required()
 def studentprofile(request):
+    user = request.user
     form = StudentCategoriesForm()
-    return render(request, 'qmeet/createstudentprofile.html', {'form': form})
+    try:
+        user_sp = get_profile_by_student(user)
+        context = {'profile': user_sp, 'form': form}
+        return render(request, 'qmeet/createstudentprofile.html', context)
+
+    except StudentProfile.DoesNotExist:
+        context = {'profile': None, 'form': form}
+        return render(request, 'qmeet/createstudentprofile.html', context)
 
 
 @login_required()
@@ -39,18 +49,20 @@ def new_student_profile(request):
         form = StudentCategoriesForm(request.POST)
         if form.is_valid():
             student = user
-            bio = form.cleaned_data['bio']
+            bio = request.POST['bio']
             location = form.cleaned_data['location']
             course = form.cleaned_data['course']
             year = form.cleaned_data['year']
-            student_profile = get_profile_by_student(user)
+            # display_picture = form.cleaned_data['display_picture']
 
-            if student_profile is None:
-                student_profile = StudentProfile(student=student, course=course, bio=bio, location=location)  # , display_picture=display_picture)
-                student_profile.save()
-            else:
+            try:
+                student_profile = get_profile_by_student(user)
                 StudentProfile.objects.filter(student=student).update(student=student, course=course, bio=bio, location=location)
                 StudentCategories.objects.filter(student_profile=student_profile).delete()
+
+            except StudentProfile.DoesNotExist:
+                student_profile = StudentProfile(student=student, course=course, bio=bio, location=location)  # , display_picture=display_picture)
+                student_profile.save()
 
             for categories in form.cleaned_data['categories']:
                 student_categories = StudentCategories(student_profile=student_profile, categories=categories)
@@ -96,6 +108,9 @@ def new_event(request):
             capacity = form.cleaned_data['capacity']
             event = Event(host=user, title=title, location=location, start_date=start_date, end_date=end_date, capacity=capacity)
             event.save()
+            event.attendees.add(user)
+            student_event = StudentEvents(student=user, event=event)
+            student_event.save()
 
             for categories in form.cleaned_data['categories']:
                 event_categories = EventCategories(event=event, categories=categories)
@@ -110,8 +125,8 @@ def update_event(request):
         if form.is_valid():
             event_id = request.GET['event_id']
             event = Event.objects.get(id=event_id)
-            title = form.cleaned_data['title']
-            location = form.cleaned_data['location']
+            title = request.POST['title']
+            location = request.POST['location']
             start_date = request.POST['start-date']
             end_date = request.POST['end-date']
             capacity = form.cleaned_data['capacity']
@@ -126,12 +141,14 @@ def update_event(request):
 
 @login_required()
 def students(request):
-    return render(request, 'qmeet/students.html')
+    form = FilterStudentsForm()
+    return render(request, 'qmeet/students.html', {'form': form})
 
 
 @login_required()
 def events(request):
-    return render(request, 'qmeet/events.html')
+    form = FilterEventsForm()
+    return render(request, 'qmeet/events.html', {'form': form})
 
 
 class StudentListView(generics.ListAPIView):
@@ -145,12 +162,13 @@ class EventListView(generics.ListAPIView):
 
 
 @login_required()
-def get_all_students(request):
+def get_friend_list(request):
     user = request.user
-    students_f = StudentProfile.objects.exclude(student=user)
-    student_list = Student.objects.filter(id__in=Subquery(students_f.values('student_id'))).values()
+    cursor = connection.cursor()
+    cursor.execute('call GetFriendsSP(' + str(user.id) + ')')
+    filtered_users = cursor.fetchall()
     return JsonResponse({
-        'students': list(student_list)
+        'students': list(filtered_users)
     })
 
 
@@ -248,22 +266,69 @@ def reject_friend_request(request):
 
 
 @login_required()
+def remove_friend(request):
+    user = request.user
+    sp_id = request.GET['student_profile_id']
+    student_profile = StudentProfile.objects.get(id=sp_id)
+    user_student_profile = get_profile_by_student(user)
+    user_student_profile.friends.remove(student_profile)
+    student_profile.friends.remove(user_student_profile)
+    return HttpResponse("Removed from friend list")
+
+
+@login_required()
+def compare_user_and_student_profile(request):
+    user = request.user
+    sp_id = request.GET['student_profile_id']
+    student_profile = StudentProfile.objects.get(id=sp_id)
+    user_profile = StudentProfile.objects.get(student=user)
+    if student_profile == user_profile:
+        return JsonResponse({
+            'context': "Same"
+        })
+    else:
+        is_friends_empty = student_profile.friends
+        if is_friends_empty.exists():
+            for friend in student_profile.friends.all():
+                if user_profile == friend:
+                    return JsonResponse({
+                        'context': "Friends"
+                    })
+                else:
+                    return JsonResponse({
+                        'context': "Neither"
+                    })
+        else:
+            return JsonResponse({
+                'context': "Neither"
+            })
+
+
+@login_required()
 def join_event(request):
     user = request.user
     event_id = request.GET['event_id']
     event = Event.objects.get(id=event_id)
-    for t in event.attendees.all():
-        if t == user:
-            return HttpResponse("Already joined!")
-
     event.attendees.add(user)
+    student_event = StudentEvents(student=user, event=event)
+    student_event.save()
     return HttpResponse("You have joined the event!")
+
+
+@login_required()
+def leave_event(request):
+    user = request.user
+    event_id = request.GET['event_id']
+    event = Event.objects.get(id=event_id)
+    event.attendees.remove(user)
+    student_event = StudentEvents.objects.get(student=user, event=event)
+    student_event.delete()
+    return HttpResponse("You have left the event")
 
 
 @login_required()
 def get_student_categories(request):
     sp_id = request.GET['student_profile_id']
-    #student_profile = StudentProfile.objects.get(id=sp_id)
     categories_f = StudentCategories.objects.filter(student_profile_id=sp_id).values()
     categories = Categories.objects.filter(id__in=Subquery(categories_f.values('categories_id'))).values()
     return JsonResponse({
@@ -286,19 +351,33 @@ def check_student_profile_exists(request):
 
 
 @login_required()
-def compare_profiles(request):
+def check_user_is_host(request):
     user = request.user
     user_sp = get_profile_by_student(user)
-    student_profile_id = request.GET['student_profile_id']
+    student_profile_id = request.GET.get('event_host_spid')
     student_profile = StudentProfile.objects.get(id=student_profile_id)
+    event_id = request.GET.get('event_id')
+    event = Event.objects.get(id=event_id)
     if user_sp == student_profile:
         return JsonResponse({
-            'context': True
+            'context': "Host"
         })
     else:
-        return JsonResponse({
-            'context': False
-        })
+        student_events = StudentEvents.objects.filter(event=event)
+        if student_events.exists():
+            for student_event in student_events:
+                if student_event.student == user:
+                    return JsonResponse({
+                        'context': "Attendee"
+                    })
+            else:
+                return JsonResponse({
+                    'context': "Neither"
+                })
+        else:
+            return JsonResponse({
+                'context': "Neither"
+            })
 
 
 def get_hosted_events(request):
@@ -307,3 +386,53 @@ def get_hosted_events(request):
     return JsonResponse({
         'hosted_events': list(events)
     })
+
+
+def filter_student(request):
+    if request.method == "POST":
+        form = FilterStudentsForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            categories_list = []
+            categories = form.cleaned_data['categories']
+            for category in categories:
+                categories_list.append(category.category)
+
+            categories_string = ','.join(categories_list)
+            cursor = connection.cursor()
+            cursor.execute('call FilterSP(' + '"' + str(username) + '"' + ', ' + '"' + categories_string + '"' + ')')
+            filtered_users = cursor.fetchall()
+            return JsonResponse({'filtered_users': filtered_users})
+
+@login_required()
+def filter_events(request):
+    if request.method == "POST":
+        form = FilterEventsForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data['title']
+            categories_list = []
+            categories = form.cleaned_data['categories']
+            for category in categories:
+                categories_list.append(category.category)
+
+            categories_string = ','.join(categories_list)
+            cursor = connection.cursor()
+            cursor.execute('call FilterEvent(' + '"' + str(title) + '"' + ', ' + '"' + categories_string + '"' + ')')
+            filtered_events = cursor.fetchall()
+            return JsonResponse({'filtered_events': filtered_events})
+
+
+@login_required()
+def get_joined_events(request):
+    user = request.user
+    student_events = StudentEvents.objects.filter(student=user).exclude(event__host=user)
+    if student_events.exists():
+        joined_events = Event.objects.filter(id__in=Subquery(student_events.values('event_id'))).values()
+        return JsonResponse({
+            'joined_events': list(joined_events)
+        })
+    else:
+        return JsonResponse({
+            'joined_events': None
+        })
+

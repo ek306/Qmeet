@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>CREATE STUDENT PROFILE</h2>
+    <h2>STUDENT PROFILE</h2>
     <form id="create-student-profile-form" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
+        {% if profile.bio == None %}
+            <label>Bio:</label><input name="bio" type="text">
+
+            {% else %}
+            <label>Bio:</label><input name="bio" value="{{ profile.bio }}" type="text">
+        {% endif %}
+
         <button type="button" id="create-student-profile-btn">Create student profile</button>
     </form>
 

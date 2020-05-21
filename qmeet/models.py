@@ -100,8 +100,8 @@ class StudentProfile(models.Model):
     bio = models.TextField(max_length=500, blank=True)
     location = models.TextField(max_length=30, blank=True)
     friends = models.ManyToManyField("StudentProfile", blank=True)
-    #categories = models.ManyToManyField(Categories, through="StudentCategories")
-    #display_picture = models.ImageField(upload_to='profile_images', blank=True)
+    # categories = models.ManyToManyField(Categories, through="StudentCategories")
+    # display_picture = models.ImageField(upload_to='profile_images', blank=True)
 
     def __str__(self):
         return self.student.username
@@ -131,11 +131,7 @@ class StudentProfileYear(models.Model):
     student_profile = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
     year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
 
-#    class Meta:
-#        unique_together = (('student_profile', 'year'),)
-
     def __str__(self):
         student_profile = str(self.student_profile)
         year = str(self.year)
         return student_profile + year
-

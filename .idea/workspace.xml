@@ -2,12 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bced4a5-de5e-4f4a-944a-e0a4a234e65b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/qmeet/filters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/qmusocialnetwork.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/qmusocialnetwork.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_messages/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_messages/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_messages/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_messages/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_messages/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_messages/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmeet/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmeet/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmeet/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmeet/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmeet/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qmusocialnetwork/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmusocialnetwork/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmusocialnetwork/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmusocialnetwork/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/createevent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/createevent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/createstudentprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/createstudentprofile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/events.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/events.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/getevent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/getevent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/getstudentprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/getstudentprofile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/setmodules.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/students.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/students.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/updateevent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/updateevent.html" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,8 +75,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -66,7 +85,12 @@
   </component>
   <component name="ProjectId" id="1aBqtABxBiIENljQa2I9uHxv1Pk" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -78,18 +102,6 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\eesak\qmusocialnetwork\qmeet" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="qmusocialnetwork" type="Python.DjangoServer" factoryName="Django server">
@@ -117,26 +129,6 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@a9551144" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@a9551144" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@409949a9" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-          </expand>
-          <select />
-        </treeState>
-      </serviceView>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -157,34 +149,82 @@
       <workItem from="1589048203896" duration="52998000" />
       <workItem from="1589320904678" duration="11291000" />
       <workItem from="1589382569473" duration="24984000" />
+      <workItem from="1589544353483" duration="18719000" />
+      <workItem from="1589650690568" duration="91050000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="267" y="19" key="#Inspections" timestamp="1589548641647">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="267" y="19" key="#Inspections/0.0.1280.680@0.0.1280.680" timestamp="1589548641646" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589545699988">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1589545699988" />
+    <state x="396" y="44" key="#xdebugger.evaluate" timestamp="1589755042330">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="396" y="44" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1589755042330" />
+    <state width="901" height="438" key="DebuggerActiveHint" timestamp="1590001938563">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="901" height="438" key="DebuggerActiveHint/0.0.1280.680@0.0.1280.680" timestamp="1590001938563" />
+    <state width="1237" height="2" key="GridCell.Tab.0.bottom" timestamp="1590027685497">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="2" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1590027685497" />
+    <state width="1237" height="2" key="GridCell.Tab.0.center" timestamp="1590027685497">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="2" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1590027685497" />
+    <state width="1237" height="2" key="GridCell.Tab.0.left" timestamp="1590027685497">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="2" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1590027685497" />
+    <state width="1237" height="2" key="GridCell.Tab.0.right" timestamp="1590027685497">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="2" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1590027685497" />
+    <state width="1237" height="2" key="GridCell.Tab.1.bottom" timestamp="1590027685497">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="2" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1590027685497" />
+    <state width="1237" height="2" key="GridCell.Tab.1.center" timestamp="1590027685497">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="2" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1590027685497" />
+    <state width="1237" height="2" key="GridCell.Tab.1.left" timestamp="1590027685497">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="2" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1590027685497" />
+    <state width="1237" height="2" key="GridCell.Tab.1.right" timestamp="1590027685497">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="2" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1590027685497" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1589679296052">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589679296052" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/qmeet/views.py</url>
-          <line>87</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -196,6 +236,7 @@
     <watches-manager>
       <configuration name="Python.DjangoServer">
         <watch expression="form" />
+        <watch expression="student_profile" />
       </configuration>
     </watches-manager>
   </component>

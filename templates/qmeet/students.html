@@ -1,26 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-    <p>This page shows a list of all students</p>
-    <div>
-        <ul id="student-list">
+
+    <p>You can search for users by their username, categories that they are interested in, or both!</p>
+    <form id="filter-students-form" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="button" id="student-filter-btn">Filter students</button>
+    </form>
+
+    <div id="filtered-students-div">
+        <ul id="filtered-students-list">
 
         </ul>
     </div>
 
+
 <script>
-    $(document).ready(function(){
+
+    $("#student-filter-btn").click(function(){
         $.ajax({
-            url: "{% url 'get all students' %}",
-            type: "GET",
-            dataType: "json",
-            success: function(data) {
-                var i;
-                for (i=0; i<data.students.length; i++) {
-                  $("#student-list").append('<li id=' + data.students[i].id + '>' + '<a href="{% url 'get student profile' %}?student_id=' + data.students[i].id + '">' + data.students[i].username + '</a>' + '<button type="button">Click Me!</button>' + '</li>')
+            url: "{% url 'filter students' %}",
+            type: "POST",
+            data: $("#filter-students-form").serializeArray(),
+            success: function (data) {
+                $("#filtered-students-list").empty()
+                for(let i=0; i<data.filtered_users.length; i++) {
+                    $("#filtered-students-list").append('<li id=' + data.filtered_users[i][0] + '>' + '<a href="{% url 'get student profile' %}?student_id=' + data.filtered_users[i][0]
+                        + '">' + data.filtered_users[i][1] + '</a>' + '</li>')
                 }
             }
         })
     })
+
 </script>
 {% endblock %}
 

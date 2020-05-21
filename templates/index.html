@@ -16,6 +16,11 @@
 
     <p><a href="{% url 'events' %}">View all events</a></p>
 
+    <div>
+        <ul id="student-friend-list"> <p>Friends list:</p>
+
+        </ul>
+    </div>
 
     <div id="received-friend-requests-div">
         <ul id="received-friend-requests-list">
@@ -30,8 +35,15 @@
     </div>
 
     <div id="host-events-div">
-    <p>Events you are hosting:</p>
+        <p>Events you are hosting:</p>
         <ul id="host-events-list">
+
+        </ul>
+    </div>
+
+    <div id="joined-events-div">
+        <p>Events you have joined:</p>
+        <ul id="joined-events-list">
 
         </ul>
     </div>
@@ -94,6 +106,35 @@
                 for(i=0; data.hosted_events.length; i++) {
                     $("#host-events-list").append('<li id=' + data.hosted_events[i].id + '>' + '<a href="{% url 'get event' %}?event_id=' + data.hosted_events[i].id + '">'
                         + data.hosted_events[i].title + '</a>' + '</li>')
+                }
+            }
+        })
+    })
+
+    $(document).ready(function(){
+        $.ajax({
+            url: "{% url 'get friend list' %}",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+               for(var i=0; i<data.students.length; i++) {
+                   $("#student-friend-list").append('<li id=' + data.students[i][0] + '>' + '<a href="{% url 'get student profile' %}?student_id=' + data.students[i][0]
+                       + '">' + data.students[i][1] + '</a>' + '</li>')
+               }
+            }
+        })
+    })
+
+    $(document).ready(function(){
+        $.ajax({
+            url: "{% url 'get joined events' %}",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                var i;
+                for(i=0; i<data.joined_events.length; i++) {
+                    $("#joined-events-list").append('<li id=' + data.joined_events[i].id + '>' + '<a href="{% url 'get event' %}?event_id=' + data.joined_events[i].id + '">'
+                        + data.joined_events[i].title + '</a>' + '</li>')
                 }
             }
         })
