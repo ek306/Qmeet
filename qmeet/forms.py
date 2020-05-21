@@ -38,8 +38,14 @@ class EventCategoriesForm(ModelForm):
         model = Event
         fields = ['title', 'location', 'capacity', 'categories']
 
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'location': forms.TextInput(attrs={'class': 'form-control'}),
+            'capacity': forms.NumberInput(attrs={'class': 'form-control'}),
+            'categories': forms.CheckboxSelectMultiple(attrs={'class', 'form-control'})
+        }
 
-#class ModulesForm(ModelForm):
+# class ModulesForm(ModelForm):
 #    module_one = forms.ModelChoiceField(
 #        queryset=Module.objects.all()
 #    )

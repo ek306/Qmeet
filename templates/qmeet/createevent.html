@@ -2,31 +2,59 @@
 {% block content %}
 
     <h2>CREATE NEW EVENT</h2>
-    <form id="create-event-form" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <table>
-            <tr>
-                <td><label>Start date:</label></td> <td><input name="start-date" type="datetime-local"></td>
-            </tr>
-            <tr>
-                <td><label>End date:</label></td> <td><input name="end-date" type="datetime-local"></td>
-            </tr>
-        </table>
-        <button type="button" id="create-event-btn">Create event</button>
-    </form>
+    <div class="form-group" >
+    <div style="width: 25%">
+        <form id="create-event-form" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <div class="row">
+                <label>Start date:</label>
+                <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                    <input name="start-date" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1">
+                    <span class="input-group-addon" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <label>End date:</label>
+                <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                    <input name="end-date" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2">
+                    <span class="input-group-addon" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="submit-row">
+                <button type="button" class="btn btn-primary" id="create-event-btn">
+                    <span class="glyphicon glyphicon-floppy-save"></span> Create event
+                </button>
+            </div>
+        </form>
+    </div>
+    </div>
 
    <script>
        $(document).ready(function() {
-            $("#create-event-btn").click(function() {
-                $.ajax({
-                    url: "{% url 'new event' %}",
-                    method: "POST",
-                    data: $("#create-event-form").serializeArray(),
-                    success: function(data) {
-                    }
-                });
+            $('#datetimepicker1').datetimepicker({
+                //locale: 'en-gb',
+                format: 'YYYY-MM-DD HH:MM'
             });
+            $('#datetimepicker2').datetimepicker({
+                //locale: 'en-gb',
+                format: 'YYYY-MM-DD HH:MM'
+            });
+
+           $("#create-event-btn").click(function() {
+               $.ajax({
+                   url: "{% url 'new event' %}",
+                   method: "POST",
+                   data: $("#create-event-form").serializeArray(),
+                   success: function(data) {
+                   }
+               });
+           });
        });
 
     </script>
