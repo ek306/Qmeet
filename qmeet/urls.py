@@ -7,7 +7,7 @@ urlpatterns = [
     path('signup/', views.SignUp.as_view(), name='signup'),
     path('studentprofile/', views.studentprofile, name='create student profile'),
     path('new_student_profile', views.new_student_profile, name='new student profile'),
-    path('createevent/', views.createevent, name='create event'),
+    path('createevent/', views.CreateEventView.as_view(), name='create event'),
     path('updateevent/', views.updateevent, name='update event page'),
     path('new_event', views.new_event, name="new event"),
     path('update_event', views.update_event, name='update event'),
@@ -30,5 +30,6 @@ urlpatterns = [
     path('get_student_categories', views.get_student_categories, name='get student categories'),
     path('check_student_profile_exists', views.check_student_profile_exists, name='check student profile exists'),
     path('compare_profiles', views.compare_profiles, name='compare user and student profile'),
-    path('timetable/', views.get_timetable, name="get timetable")
+    path('timetable/', views.timetable, name='timetable'),
+    path('get_timetable', views.get_timetable, name="get timetable"),
 ]

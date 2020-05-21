@@ -5,21 +5,40 @@
 
 {%  block content %}
     <style>
+        .timetable-table{
+            border-collapse: collapse;
+        }
+
         table{
             border-collapse: collapse;
         }
-        td,
         th {
-            /*display: inline-block;*/
             padding: 10px 10px;
         }
 
         td {
+            height: 50px;
+            width: 100px;
+            padding: 10px 10px;
             text-align: center;
+            border: none;
+        }
+
+        tr{
+            border: none;
         }
 
         .timetable-day-header{
-            border: solid rgb(100, 100, 100);
+            border-top: solid rgb(100, 100, 100);
+            border-bottom: solid rgb(100, 100, 100);
+            border-left: solid rgb(100, 100, 100);
+            border-right: solid rgb(100, 100, 100);
+            height: 30px;
+            width: 100px;
+        }
+
+        .timetable-day-header-corner{
+            border: none;
             height: 30px;
             width: 100px;
         }
@@ -32,75 +51,122 @@
 
         .study_module1{
             background-color: #f5e79e;
+            border: solid rgb(100, 100, 100);
         }
 
-        .study_module2{
-            background-color: #f5e79e;
-            row-span: 2;
-        }
+
     </style>
 
     <table>
-        <colgroup>
-            <col>
-            <col span="6" class="timetable-header">
-        </colgroup>
+        <thead>
+            <tr>
+                <th class="timetable-day-header-corner"></th>
+                <th class="timetable-day-header">MON</th>
+                <th class="timetable-day-header">TUES</th>
+                <th class="timetable-day-header">WED</th>
+                <th class="timetable-day-header">THURS</th>
+                <th class="timetable-day-header">FRI</th>
+            </tr>
+        </thead>
+        <tbody>
         <tr>
-            <td></td>
-            <th class="timetable-day-header">MON</th>
-            <th class="timetable-day-header">TUES</th>
-            <th class="timetable-day-header">WED</th>
-            <th class="timetable-day-header">THURS</th>
-            <th class="timetable-day-header">FRI</th>
+            <tr>
+                <td class="timetable-row-time">9 - 10</td>
+                <td id="mon-9"></td>
+                <td id="tue-9"></td>
+                <td id="wed-9"></td>
+                <td id="thu-9"></td>
+                <td id="fri-9"></td>
+            </tr>
+            <tr>
+                <td class="timetable-row-time">10 - 11</td>
+                <td id="mon-10"></td>
+                <td id="tue-10"></td>
+                <td id="wed-10"></td>
+                <td id="thu-10"></td>
+                <td id="fri-10"></td>
+            </tr>
+            <tr>
+                <td class="timetable-row-time">11 - 12</td>
+                <td id="mon-11"></td>
+                <td id="tue-11"></td>
+                <td id="wed-11"></td>
+                <td id="thu-11"></td>
+                <td id="fri-11"></td>
+            </tr>
+            <tr>
+                <td class="timetable-row-time">12 - 13</td>
+                <td id="mon-12"></td>
+                <td id="tue-12"></td>
+                <td id="wed-12"></td>
+                <td id="thu-12"></td>
+                <td id="fri-12"></td>
+            </tr>
+            <tr>
+                <td class="timetable-row-time">13 - 14</td>
+                <td id="mon-13"></td>
+                <td id="tue-13"></td>
+                <td id="wed-13"></td>
+                <td id="thu-13"></td>
+                <td id="fri-13"></td>
+            </tr>
+            <tr>
+                <td class="timetable-row-time">14 - 15</td>
+                <td id="mon-14"></td>
+                <td id="tue-14"></td>
+                <td id="wed-14"></td>
+                <td id="thu-14"></td>
+                <td id="fri-14"></td>
+            </tr>
+            <tr>
+                <td class="timetable-row-time">15 - 16</td>
+                <td id="mon-15"></td>
+                <td id="tue-15"></td>
+                <td id="wed-15"></td>
+                <td id="thu-15"></td>
+                <td id="fri-15"></td>
+            </tr>
+            <tr>
+                <td class="timetable-row-time">16 - 17</td>
+                <td id="mon-16"></td>
+                <td id="tue-16"></td>
+                <td id="wed-16"></td>
+                <td id="thu-16"></td>
+                <td id="fri-16"></td>
+            </tr>
         </tr>
-        <tr>
-            {% for i in 8|iterations %}
-                {% if i < timetable.semester_modules|length %}
-                    {% with mod=timetable.semester_modules|index:i %}
-                        <tr>
-                            <th class="timetable-row-time">{{ forloop.counter|add:8 }} - {{ forloop.counter|add:9 }}</th>
-                            {% if mod.module_start_time == i|add:9 and mod.day_of_week == 'Monday' %}
-                                <td id="mon-{{ i|add:9 }}">{{ mod.module_start_time }} found time</td>
-                            {% else %}
-                                <td id="mon-{{ i|add:9 }}">{{mod.day_of_week}} Monday</td>
-                            {% endif %}
-
-                            {% if mod.module_start_time == i|add:9 and mod.day_of_week == 'Tuesday' %}
-                                <td id="tue-{{ i|add:9 }}">{{ mod.module_start_time }} found time</td>
-                            {% else %}
-                                <td id="tue-{{ i|add:9 }}">{{mod.day_of_week}} Tuesday</td>
-                            {% endif %}
-
-                            {% if mod.module_start_time == i|add:9 and mod.day_of_week == 'Wednesday' %}
-                                <td id="wed-{{ i|add:9 }}">{{ mod.module_start_time }} found time</td>
-                            {% else %}
-                                <td id="wed-{{ i|add:9 }}">{{mod.day_of_week}} </td>
-                            {% endif %}
-
-                            {% if mod.module_start_time == i|add:9 and mod.day_of_week == 'Thursday' %}
-                                <td id="thr-{{ i|add:9 }}">{{ mod.module_start_time }} found time</td>
-                            {% else %}
-                                <td id="thr-{{ i|add:9 }}">{{mod.day_of_week}} Thursday</td>
-                            {% endif %}
-
-                            {% if mod.module_start_time == i|add:9 and mod.day_of_week == 'Friday' %}
-                                <td id="fri-{{ i|add:9 }}">{{ mod.module_start_time }} found time</td>
-                            {% else %}
-                                <td id="fri-{{ i|add:9 }}">{{mod.day_of_week}} Friday</td>
-                            {% endif %}
-                        </tr>
-                    {% endwith %}
-                {% else %}
-                    <tr>
-                        <th class="timetable-row-time">{{ forloop.counter|add:8 }} - {{ forloop.counter|add:9 }}</th>
-                        <td id="mon-{{ i|add:9 }}"></td>
-                        <td id="tue-{{ i|add:9 }}"></td>
-                        <td id="wed-{{ i|add:9 }}"></td>
-                        <td id="thr-{{ i|add:9 }}"></td>
-                        <td id="fri-{{ i|add:9 }}"></td>
-                    </tr>
-                {% endif %}
-            {% endfor %}
-        </tr>
+    </tbody>
     </table>
+
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url: "{% url 'get timetable' %}",
+                type: "GET",
+                contentType: "application/json",
+                success: function(data) {
+                    for (let i = 0; i < data.GetTimetableForUser.length; i++){
+                        let idTag = data.GetTimetableForUser[i][4] + '-' + data.GetTimetableForUser[i][2];
+                        if (data.GetTimetableForUser[i][5] == 1) {
+                            $('#' + idTag).addClass('study_module1');
+                            $('#' + idTag).html(data.GetTimetableForUser[i][1])
+                        }
+                        else{
+                            $('#' + idTag).addClass('study_module1');
+                            $('#' + idTag).attr('rowspan', "2");
+                            $('#' + idTag).html(data.GetTimetableForUser[i][1])
+                            let cellValue = data.GetTimetableForUser[i][2] + 1;
+                            let cellToDelete = data.GetTimetableForUser[i][4] + '-' + cellValue;
+                            $('#' + cellToDelete).hide();
+                        }
+                    }
+                    $('#timetable').addClass('timetable-table')
+                },
+                error: function(){
+                    alert('an error occurred')
+                }
+            });
+        })
+    </script>
+
 {% endblock %}

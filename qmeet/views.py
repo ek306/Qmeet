@@ -1,14 +1,19 @@
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views import generic
 from django.db.models import Subquery
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.views.generic import CreateView
 from .forms import StudentCreationForm, StudentCategoriesForm, EventCategoriesForm
-from .models import Student, Event, StudentProfile, StudentCategories, EventCategories, StudentProfileYear, FriendRequest, Categories
+from .models import Student, Event, StudentProfile, StudentCategories, EventCategories, StudentProfileYear, \
+    FriendRequest, Categories
 from django.http import HttpResponse, JsonResponse
 from rest_framework import generics
 from . import serializers
 from .models import Student, Event, StudentProfile, StudentCategories, EventCategories, StudentProfileYear
+from django.db import connection
+from .models import GetTimetableForUser
 
 
 class Timetable:
@@ -67,10 +72,12 @@ def new_student_profile(request):
             student_profile = get_profile_by_student(user)
 
             if student_profile is None:
-                student_profile = StudentProfile(student=student, course=course, bio=bio, location=location)  # , display_picture=display_picture)
+                student_profile = StudentProfile(student=student, course=course, bio=bio,
+                                                 location=location)  # , display_picture=display_picture)
                 student_profile.save()
             else:
-                StudentProfile.objects.filter(student=student).update(student=student, course=course, bio=bio, location=location)
+                StudentProfile.objects.filter(student=student).update(student=student, course=course, bio=bio,
+                                                                      location=location)
                 StudentCategories.objects.filter(student_profile=student_profile).delete()
 
             for categories in form.cleaned_data['categories']:
@@ -90,10 +97,15 @@ def index(request):
     return render(request, 'index.html')
 
 
-@login_required
-def createevent(request):
-    form = EventCategoriesForm()
-    return render(request, 'qmeet/createevent.html', {'form': form})
+@method_decorator(login_required, name='dispatch')
+class CreateEventView(CreateView):
+    template_name = 'qmeet/createevent.html'
+    form_class = EventCategoriesForm
+
+
+# def createevent(request):
+#    form = EventCategoriesForm()
+#    return render(request, 'qmeet/createevent.html', {'form': form})
 
 
 @login_required()
@@ -115,7 +127,8 @@ def new_event(request):
             start_date = request.POST['start-date']
             end_date = request.POST['end-date']
             capacity = form.cleaned_data['capacity']
-            event = Event(host=user, title=title, location=location, start_date=start_date, end_date=end_date, capacity=capacity)
+            event = Event(host=user, title=title, location=location, start_date=start_date, end_date=end_date,
+                          capacity=capacity)
             event.save()
 
             for categories in form.cleaned_data['categories']:
@@ -137,7 +150,8 @@ def update_event(request):
             end_date = request.POST['end-date']
             capacity = form.cleaned_data['capacity']
             EventCategories.objects.filter(event=event).delete()
-            Event.objects.filter(id=event_id).update(host=user, title=title, location=location, start_date=start_date, end_date=end_date, capacity=capacity)
+            Event.objects.filter(id=event_id).update(host=user, title=title, location=location, start_date=start_date,
+                                                     end_date=end_date, capacity=capacity)
 
             for categories in form.cleaned_data['categories']:
                 event_categories = EventCategories(event=event, categories=categories)
@@ -218,7 +232,8 @@ def send_friend_request(request):
 def get_friend_requests(request):
     user = request.user
     friend_requests_f = FriendRequest.objects.filter(to_user=user).values()
-    received_friend_requests = Student.objects.filter(id__in=Subquery(friend_requests_f.values('from_user_id'))).values()
+    received_friend_requests = Student.objects.filter(
+        id__in=Subquery(friend_requests_f.values('from_user_id'))).values()
     return JsonResponse({
         "friend_requests": list(received_friend_requests)
     })
@@ -284,7 +299,7 @@ def join_event(request):
 @login_required()
 def get_student_categories(request):
     sp_id = request.GET['student_profile_id']
-    #student_profile = StudentProfile.objects.get(id=sp_id)
+    # student_profile = StudentProfile.objects.get(id=sp_id)
     categories_f = StudentCategories.objects.filter(student_profile_id=sp_id).values()
     categories = Categories.objects.filter(id__in=Subquery(categories_f.values('categories_id'))).values()
     return JsonResponse({
@@ -332,18 +347,12 @@ def get_hosted_events(request):
 
 @login_required()
 def get_timetable(request):
-    timetable = Timetable()
-    semester_module = SemesterModule("S1", "Introduction to Python", 9, 11, 2019, "Monday")
-    timetable.add_module(semester_module)
-    semester_module = SemesterModule("S1", "Operating Systems", 11, 12, 2019, "Wednesday")
-    timetable.add_module(semester_module)
-    semester_module = SemesterModule("S1", "Introduction to Python (Lab)", 14, 15, 2019, "Monday")
-    timetable.add_module(semester_module)
-    semester_module = SemesterModule("S1", "Databases 101", 14, 16, 2019, "Thursday")
-    timetable.add_module(semester_module)
-    semester_module = SemesterModule("S1", "Databases 101 (Lab)", 13, 14, 2019, "Friday")
-    timetable.add_module(semester_module)
-    context = {'timetable': timetable}
-    return render(request, 'qmeet/timetable.html', context)
+    cursor = connection.cursor()
+    cursor.execute('call GetTimetableForUserSP(' + str(request.user.id) + ')')
+    semester_module = cursor.fetchall()
+    return JsonResponse({'GetTimetableForUser': semester_module})
 
 
+@login_required()
+def timetable(request):
+    return render(request, 'qmeet/timetable.html')

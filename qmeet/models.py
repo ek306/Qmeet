@@ -54,6 +54,7 @@ class Event(models.Model):
     end_date = models.DateTimeField()
     capacity = models.IntegerField(default=100)
     attendees = models.ManyToManyField(Student, blank=True, related_name="attendees")
+
     # image = models.ImageField(upload_to='event_images', blank=True)
 
     def __str__(self):
@@ -100,8 +101,9 @@ class StudentProfile(models.Model):
     bio = models.TextField(max_length=500, blank=True)
     location = models.TextField(max_length=30, blank=True)
     friends = models.ManyToManyField("StudentProfile", blank=True)
-    #categories = models.ManyToManyField(Categories, through="StudentCategories")
-    #display_picture = models.ImageField(upload_to='profile_images', blank=True)
+
+    # categories = models.ManyToManyField(Categories, through="StudentCategories")
+    # display_picture = models.ImageField(upload_to='profile_images', blank=True)
 
     def __str__(self):
         return self.student.username
@@ -131,11 +133,42 @@ class StudentProfileYear(models.Model):
     student_profile = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
     year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
 
-#    class Meta:
-#        unique_together = (('student_profile', 'year'),)
+    #    class Meta:
+    #        unique_together = (('student_profile', 'year'),)
 
     def __str__(self):
         student_profile = str(self.student_profile)
         year = str(self.year)
         return student_profile + year
 
+
+class Semester(models.Model):
+    name = models.CharField(max_length=15)
+
+    def __str__(self):
+        return f"{self.name}"
+
+
+class SemesterModule(models.Model):
+    start_hour = models.IntegerField(default=0)
+    end_hour = models.IntegerField(default=0)
+    day = models.CharField(max_length=9)
+    abbreviated_day = models.CharField(max_length=3)
+    module = models.ForeignKey(Module, on_delete=models.CASCADE)
+    semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
+
+    @property
+    def duration(self):
+        return self.end_hour - self.start_hour
+
+    def __str__(self):
+        return f"{self.module.name} {self.semester.name}"
+
+
+class GetTimetableForUser(models.Model):
+    semester_name = models.CharField(max_length=20)
+    module_name = models.CharField(max_length=50)
+    start_hour = models.IntegerField
+    end_hour = models.IntegerField
+    abbreviated_day = models.CharField(max_length=3)
+    duration = models.IntegerField
