@@ -26,31 +26,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0bced4a5-de5e-4f4a-944a-e0a4a234e65b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/khalil408_ahmed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/khalil408_ahmed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0002_auto_20200509_0049.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0003_event_attendees.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0004_studentprofile_categories.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0005_remove_studentprofile_categories.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0006_auto_20200511_2019.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0007_auto_20200511_2025.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0008_studentprofile_categories.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0009_remove_studentprofile_categories.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmusocialnetwork/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmusocialnetwork/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/qmeet/createevent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/createevent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/qmeet/getstudentprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/getstudentprofile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/qmeet/timetable.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/timetable.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/qmeet/updateevent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/updateevent.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +117,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="qmusocialnetwork.settings" />
       </envs>
-      <option name="SDK_HOME" value="D:\git\src\django\qmeet-env\Scripts\python.exe" />
+      <option name="SDK_HOME" value="C:\git\src\django\Qmeet\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -230,6 +207,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589983418338" />
+    <state x="351" y="0" key="#qmusocialnetwork" timestamp="1590087692083">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="351" y="0" key="#qmusocialnetwork/0.0.1280.680@0.0.1280.680" timestamp="1590087692083" />
     <state width="1534" height="440" key="DebuggerActiveHint" timestamp="1590027728430">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -298,9 +279,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="322" y="141" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.824@0.0.1536.824" timestamp="1590015365799" />
-    <state x="569" y="201" key="git4idea.merge.GitMergeDialog" timestamp="1589431023244">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="474" y="166" key="git4idea.merge.GitMergeDialog" timestamp="1590088162306">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="474" y="166" key="git4idea.merge.GitMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1590088162306" />
     <state x="569" y="201" key="git4idea.merge.GitMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1589431023244" />
   </component>
   <component name="XDebuggerManager">
