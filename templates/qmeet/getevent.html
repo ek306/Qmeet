@@ -5,6 +5,8 @@
 
     <p>The event is being hosted by {{ event.host.username }}</p>
 
+    <p>Location of the event: {{ event.location }}</p>
+
     <p>The event starts at{{ event.start_date }}</p>
 
     <p>The event ends at {{ event.end_date }}</p>
@@ -24,15 +26,23 @@
 
     $(document).ready(function() {
         $.ajax({
-            url: "{% url 'compare user and student profile' %}?student_profile_id={{ event.host.studentprofile.id }}",
+            url: "{% url 'check user is host' %}",
             type: "GET",
+            data: {
+                'event_host_spid': {{ event.host.studentprofile.id }},
+                'event_id': {{ event.id }}
+            },
             success: function (data) {
-                if (data.context == true) {
-                    $("#join-event-div").append('<button type="button" id="join-event-button"><a href="{% url "update event page" %}?event_id={{ event.id }}">Update event</a></button>')
+                if (data.context == "Host") {
+                    $("#join-event-div").append('<button type="button" id="update-event-button"><a href="{% url "update event page" %}?event_id={{ event.id }}">Update event</a></button>')
+                }
+
+                else if (data.context == "Neither") {
+                    $("#join-event-div").append('<button type="button" id="join-event-button"><a href="{% url "join event" %}?event_id={{ event.id }}">Join event</a></button>')
                 }
 
                 else {
-                    $("#join-event-div").append('<button type="button" id="join-event-button"><a href="{% url "join event" %}?event_id={{ event.id }}">Join event</a></button>')
+                    $("#join-event-div").append('<button type="button" id="leave-event-button"><a href="{% url "leave event" %}?event_id={{ event.id }}">Leave event</a></button>')
                 }
             }
         })

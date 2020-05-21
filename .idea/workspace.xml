@@ -26,8 +26,119 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0bced4a5-de5e-4f4a-944a-e0a4a234e65b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/django_messages/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/context_processors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/fields.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/ar/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/ar/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/ca/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/ca/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/cs/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/cs/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/da/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/da/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/de/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/de/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/el/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/el/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/es/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/es/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/es_AR/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/es_AR/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/eu/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/eu/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/fa/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/fa/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/fr/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/fr/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/id/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/id/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/it/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/it/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/ko/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/ko/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/lt/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/lt/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/nl/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/nl/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/pl/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/pl/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/pt_BR/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/pt_BR/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/ro/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/ro/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/ru/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/ru/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/zh_CN/LC_MESSAGES/django.mo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/locale/zh_CN/LC_MESSAGES/django.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/management.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/management/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/management/commands/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/management/commands/delete_deleted_messages.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/migrations/0002_auto_20160607_0852.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/migrations/0003_auto_20190617_1316.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/signals.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/django_messages/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/django_messages/compose.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/django_messages/inbox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/django_messages/new_message.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/django_messages/outbox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/django_messages/trash.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/django_messages/view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/notification/messages_deleted/full.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/notification/messages_deleted/notice.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/notification/messages_received/full.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/notification/messages_received/notice.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/notification/messages_received/short.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/notification/messages_recovered/full.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/notification/messages_recovered/notice.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/notification/messages_replied/full.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/notification/messages_replied/notice.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/notification/messages_reply_received/full.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/notification/messages_reply_received/notice.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/notification/messages_reply_received/short.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/notification/messages_sent/full.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templates/notification/messages_sent/notice.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templatetags/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/templatetags/inbox.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_messages/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qmeet/filters.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qmeetdata.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/qmusocialnetwork.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/qmusocialnetwork.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmeet/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmeet/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0002_semestermodule_day.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0003_auto_20200516_0333.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0004_semestermodule_abbreviated_day.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0005_auto_20200516_0343.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmeet/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmeet/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmeet/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmusocialnetwork/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmusocialnetwork/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qmusocialnetwork/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmusocialnetwork/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/createevent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/createevent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/createstudentprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/createstudentprofile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/events.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/events.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/getevent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/getevent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/getstudentprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/getstudentprofile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/setmodules.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/students.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/students.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/qmeet/updateevent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/updateevent.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,8 +188,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -87,11 +198,6 @@
   </component>
   <component name="ProjectId" id="1aBqtABxBiIENljQa2I9uHxv1Pk" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-    <option name="showMembers" value="true" />
-  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="sqlite" />
@@ -138,167 +244,46 @@
     <configuration />
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="0bced4a5-de5e-4f4a-944a-e0a4a234e65b" name="Default Changelist" comment="" />
-      <created>1586219546239</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1586219546239</updated>
-      <workItem from="1586219547511" duration="30904000" />
-      <workItem from="1586565062004" duration="4056000" />
-      <workItem from="1586619180703" duration="16379000" />
-      <workItem from="1587073150170" duration="19869000" />
-      <workItem from="1587327524973" duration="68518000" />
-      <workItem from="1587836385334" duration="5429000" />
-      <workItem from="1588453956165" duration="95909000" />
-      <workItem from="1589048203896" duration="52998000" />
-      <workItem from="1589320904678" duration="11291000" />
-      <workItem from="1589382569473" duration="16775000" />
-      <workItem from="1589430644706" duration="1499000" />
-      <workItem from="1589434406587" duration="4343000" />
-      <workItem from="1589476688445" duration="31075000" />
-      <workItem from="1589632673653" duration="21570000" />
-      <workItem from="1589809182205" duration="50025000" />
-      <workItem from="1590064295602" duration="392000" />
-    </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="master" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="71" key="#Deployment" timestamp="1590004061227">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="361" y="71" key="#Deployment/0.0.1536.824@0.0.1536.824" timestamp="1590004061227" />
-    <state x="395" y="91" key="#Inspections" timestamp="1589757785713">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="395" y="91" key="#Inspections/0.0.1536.824@0.0.1536.824" timestamp="1589757785713" />
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590016040107">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1590016040107" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589983418338">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589983418338" />
-    <state x="351" y="0" key="#qmusocialnetwork" timestamp="1590087692083">
+    <state width="1237" height="191" key="GridCell.Tab.0.bottom" timestamp="1590101465753">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="351" y="0" key="#qmusocialnetwork/0.0.1280.680@0.0.1280.680" timestamp="1590087692083" />
-    <state width="1534" height="440" key="DebuggerActiveHint" timestamp="1590027728430">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1534" height="440" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1590027728430" />
-    <state width="1493" height="180" key="GridCell.Tab.0.bottom" timestamp="1590033663745">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="180" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590033663745" />
-    <state width="1493" height="180" key="GridCell.Tab.0.center" timestamp="1590033663745">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="180" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590033663745" />
-    <state width="1493" height="180" key="GridCell.Tab.0.left" timestamp="1590033663745">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="180" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590033663745" />
-    <state width="1493" height="180" key="GridCell.Tab.0.right" timestamp="1590033663745">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="180" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590033663745" />
-    <state width="1493" height="180" key="GridCell.Tab.1.bottom" timestamp="1590033663746">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="180" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590033663746" />
-    <state width="1493" height="180" key="GridCell.Tab.1.center" timestamp="1590033663745">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="180" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1590033663745" />
-    <state width="1493" height="180" key="GridCell.Tab.1.left" timestamp="1590033663745">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="180" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1590033663745" />
-    <state width="1493" height="180" key="GridCell.Tab.1.right" timestamp="1590033663746">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="180" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1590033663746" />
-    <state width="1493" height="180" key="GridCell.Tab.2.bottom" timestamp="1590033663746">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="180" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590033663746" />
-    <state width="1493" height="180" key="GridCell.Tab.2.center" timestamp="1590033663746">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="180" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1590033663746" />
-    <state width="1493" height="180" key="GridCell.Tab.2.left" timestamp="1590033663746">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="180" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1590033663746" />
-    <state width="1493" height="180" key="GridCell.Tab.2.right" timestamp="1590033663746">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="180" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1590033663746" />
-    <state x="147" y="65" key="MergeDialog" timestamp="1589432062263">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1589432062263" />
-    <state x="657" y="280" width="468" height="263" key="MultipleFileMergeDialog" timestamp="1589432062274">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="657" y="280" width="468" height="263" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1589432062274" />
-    <state x="277" y="57" key="SettingsEditor" timestamp="1589515814456">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1589515814456" />
-    <state x="322" y="141" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1590015365799">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="322" y="141" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.824@0.0.1536.824" timestamp="1590015365799" />
-    <state x="474" y="166" key="git4idea.merge.GitMergeDialog" timestamp="1590088162306">
+    <state width="1237" height="191" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1590101465753" />
+    <state width="1237" height="191" key="GridCell.Tab.0.center" timestamp="1590101465753">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="474" y="166" key="git4idea.merge.GitMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1590088162306" />
-    <state x="569" y="201" key="git4idea.merge.GitMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1589431023244" />
+    <state width="1237" height="191" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1590101465753" />
+    <state width="1237" height="191" key="GridCell.Tab.0.left" timestamp="1590101465753">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="191" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1590101465753" />
+    <state width="1237" height="191" key="GridCell.Tab.0.right" timestamp="1590101465753">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="191" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1590101465753" />
+    <state x="0" y="0" width="1280" height="680" key="MergeDialog" timestamp="1590098428980">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="0" y="0" width="1280" height="680" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1590098428980" />
+    <state x="308" y="13" width="668" height="488" key="MultipleFileMergeDialog" timestamp="1590098440298">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="308" y="13" width="668" height="488" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1590098440298" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/templates/qmeet/timetable.html</url>
-          <line>142</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/qmeet/views.py</url>
-          <line>120</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -310,6 +295,7 @@
     <watches-manager>
       <configuration name="Python.DjangoServer">
         <watch expression="form" />
+        <watch expression="student_profile" />
       </configuration>
     </watches-manager>
   </component>

@@ -1,7 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-    <p>This page shows a list of all events</p>
-    <div>
+
+    <form id="filter-events-form" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="button" id="event-filter-btn">Filter students</button>
+    </form>
+
+    <div id="filtered-events-div">
+        <ul id="filtered-events-list">
+
+        </ul>
+    </div>
+
+    <div id="event-div">
         <ul id="event-list">
 
         </ul>
@@ -17,6 +29,22 @@
                 var i;
                 for (i=0; i<data.events.length; i++) {
                   $("#event-list").append('<li id=' + data.events[i].id + '>' + '<a href="{% url 'get event' %}?event_id=' + data.events[i].id + '">' + data.events[i].title + '</a></li>')
+                }
+            }
+        })
+    })
+
+    $("#event-filter-btn").click(function(){
+        $.ajax({
+            url: "{% url 'filter events' %}",
+            type: "POST",
+            data: $("#filter-events-form").serializeArray(),
+            success: function (data) {
+                $("#filtered-events-list").empty()
+                var i;
+                for(i=0; data.filtered_events.length; i++) {
+                    $("#filtered-events-list").append('<li id=' + data.filtered_events[i][0] + '>' + '<a href="{% url 'get event' %}?event_id=' + data.filtered_events[i][0]
+                        + '">' + data.filtered_events[i][1] + '</a></li>')
                 }
             }
         })

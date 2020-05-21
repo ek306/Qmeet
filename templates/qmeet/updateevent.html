@@ -1,10 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h2>CREATE NEW EVENT</h2>
+    <h2>UPDATE NEW EVENT</h2>
     <form id="update-event-form" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div>
+            <label>Title:</label>
+            <input name="title" type="text" value="{{ event.title }}">
+        </div>
+        <div>
+            <label>Location:</label>
+            <input name="location" type="text" value="{{ event.location }}">
+        </div>
+        <div>
+            <label>Capacity:</label>
+            <input name="capacity" type="text" value="{{ event.capacity }}">
+        </div>
+        <div>
+            <label>Categories:</label>
+            {{ form.categories }}
+        </div>
+
         <table>
             <tr>
                 <td><label>Start date:</label></td> <td><input name="start-date" type="datetime-local"></td>
@@ -13,7 +29,7 @@
                 <td><label>End date:</label></td> <td><input name="end-date" type="datetime-local"></td>
             </tr>
         </table>
-        <button type="button" id="update-event-btn">Create event</button>
+        <button type="button" id="update-event-btn">Update event</button>
     </form>
 
     <script>

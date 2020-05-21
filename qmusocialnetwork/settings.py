@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_auth',
     'qmeet.apps.QmeetConfig',
-    'mathfilters'
+    'mathfilters',
+    'django_messages'
 ]
 
 MIDDLEWARE = [

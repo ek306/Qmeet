@@ -39,9 +39,14 @@
             url: "{% url 'compare user and student profile' %}?student_profile_id={{ student_profile.id }}",
             type: "GET",
             success: function (data) {
-                if(data.context == true) {
+                if(data.context == "Same") {
                     $("#add-friend-div").append('<p><a href="{% url 'create student profile' %}">Update student profile</a></p>')
                 }
+
+                else if(data.context == "Friends") {
+                    $("#add-friend-div").append('<p><a href="{% url 'remove friend' %}?student_profile_id={{ student_profile.id }}">Remove friend</a></p>')
+                }
+
                 else {
                     $("#add-friend-div").append('<p><a href="{% url 'send friend request' %}?student_id={{ student_profile.student.id }}">Add friend</a></p>')
                 }
