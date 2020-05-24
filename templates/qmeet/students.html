@@ -5,7 +5,7 @@
     <form id="filter-students-form" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="button" id="student-filter-btn">Filter students</button>
+        <button type="button" class="btn btn-primary" id="student-filter-btn">Filter students</button>
     </form>
 
     <div id="filtered-students-div">

@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
         <style>
             body {
-                padding-top: 70px;
+                padding-top: 75px;
                 padding-bottom: 20px;
             }
         </style>
@@ -22,9 +22,13 @@
         <script src="https://rawgit.com/tempusdominus/bootstrap-3/master/build/js/tempusdominus-bootstrap-3.js"></script>
         <link href="https://rawgit.com/tempusdominus/bootstrap-3/master/build/css/tempusdominus-bootstrap-3.css" rel="stylesheet"/>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="{% static 'css/main.css' %}" rel="stylesheet"/>
     </head>
     <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'images/qmslogo.png' %}" width=200" height="50">
+        </a>
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -33,9 +37,23 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Game Player</a>
+          <!--<a class="navbar-brand" href="/">QMeet Social</a>-->
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+          <ul id="top-nav-bar" class="nav navbar-nav">
+              <li class="active"><a href="http://127.0.0.1:8000/qmeet">Home</a></li>
+              <li><a href="http://127.0.0.1:8000/qmeet/createevent">Create Event</a></li>
+              <li><a href="http://127.0.0.1:8000/qmeet/timetable">Timetable</a></li>
+              <li><a href="http://127.0.0.1:8000/qmeet/students">Search students</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              {% if request.user.is_authenticated %}
+                  <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logoff</a></li>
+              {% else %}
+                  <li><a href="http://127.0.0.1:8000/qmeet/signup/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                  <li><a href="http://127.0.0.1:8000/qmeet/login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              {% endif %}
+          </ul>
+ <!--       <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" role="form">
             <div class="form-group">
               <input type="text" placeholder="Email" class="form-control">
@@ -45,13 +63,39 @@
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
           </form>
-        </div><!--/.navbar-collapse -->
+        </div> --> <!--/.navbar-collapse -->
       </div>
     </nav>
 
     <div class="container">
         {% block content %}
+
         {% endblock %}
     </div>
     </body>
+<!--
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: "{% url 'check student profile exists' %}",
+                type: "GET",
+                success: function (data) {
+                    let element =  document.getElementById('elementId');
+                    if (typeof(element) != 'undefined' && element != null){
+                        if(data.profile_exists == true) {
+                            alert('profile exists')
+                            //$("#student-profile-div").append('<p><a href="{% url 'get student profile' %}?student_id={{ user.id }}">View student profile</a></p>')
+                            $("#top-nav-bar").append('<li id="my-profile"><a href="{% url 'get student profile' %}?student_id={{ user.id }}">My Profile</a></li>')
+                        }
+
+                        else if(data.profile_exists == false){
+                            alert('profile does not exist')
+                            //$("#student-profile-div").append('<p><a href="{% url 'create student profile' %}">Create student profile</a></p>')
+                            $("#top-nav-bar").append('<li id="my-profile"><a href="{% url 'create student profile' %}">My Profile</a></li>')
+                        }
+                    }
+                }
+            })
+        })
+    </script>-->
 </html>

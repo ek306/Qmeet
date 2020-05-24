@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.db import connection
 from django.db.models import Subquery
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -10,7 +10,7 @@ from rest_framework import generics
 from . import serializers
 from .forms import StudentCreationForm, StudentCategoriesForm, EventCategoriesForm, FilterStudentsForm, FilterEventsForm
 from .models import Student, Event, StudentProfile, StudentCategories, StudentEvents, EventCategories, \
-    StudentProfileYear, FriendRequest, Categories, GetTimetableForUser
+    StudentProfileYear, FriendRequest, Categories
 from django.views.generic import CreateView
 
 
@@ -32,7 +32,6 @@ class SemesterModule:
         self.module_start_time = start_time
         self.module_end_time = end_time
         self.academic_year = academic_year
-
 
 
 class SignUp(generic.CreateView):
@@ -280,7 +279,7 @@ def accept_friend_request(request):
     from_user_sp.friends.add(to_user_sp)
     frequest = FriendRequest.objects.get(to_user=to_user, from_user=from_user)
     frequest.delete()
-    return HttpResponse("Successfully accepted the request!")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 @login_required()
@@ -446,7 +445,7 @@ def filter_events(request):
 
             categories_string = ','.join(categories_list)
             cursor = connection.cursor()
-            cursor.execute('call FilterEvent(' + '"' + str(title) + '"' + ', ' + '"' + categories_string + '"' + ')')
+            cursor.execute('call FilterEventSP(' + '"' + str(title) + '"' + ', ' + '"' + categories_string + '"' + ')')
             filtered_events = cursor.fetchall()
             return JsonResponse({'filtered_events': filtered_events})
 

@@ -1,23 +1,67 @@
 {% extends 'base.html' %}
 {% block content %}
-    <p>Here is the information for {{ student_profile.student.username }}</p>
+    <h2><span style="letter-spacing: 2px;">Student Profile</span></h2>
 
-    <p>Bio: {{ student_profile.bio }}</p>
+        <div class="profile-left">
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+            </div>
+            <div>
+                <div>
+                    <div class="profile-interests">
+                        <p>Interests</p>
+                            <ul id="student-categories">
 
-    <p>Location: {{ student_profile.location }}</p>
+                            </ul>
+                        <p>Friends</p>
+                        <div id="add-friend-div">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="profile-right">
+            <h1>
+                {{ student_profile.student.username }}
+            </h1>
+            <h5>
+                <label>Course:</label>
+                <p>{{ student_profile.course }}</p>
+            </h5>
+            <h5>
+                <label>Location:</label>
+                <p>{{ student_profile.location }}</p>
+            </h5>
+            <h5>
+                <label>Bio:</label>
+                <p>{{ student_profile.bio }}</p>
+            </h5>
+        </div>
 
-    <p>Studying: {{ student_profile.course }}</p>
 
+    <!--
     <div>
-        <p>{{ student_profile.student.username }} is particularly interested in the following categories</p>
-        <ul id="student-categories">
+        <h1>{{ student_profile.student.username }}</h1>
 
-        </ul>
+        <h2><span>Studying:</span></h2><h1><span class="label label-primary">{{ student_profile.course }}</span></h1>
+
+        <p>Bio: {{ student_profile.bio }}</p>
+
+        <p>Location: {{ student_profile.location }}</p>
+
+
+        <div>
+            <p>{{ student_profile.student.username }} is particularly interested in the following categories</p>
+            <ul id="student-categories">
+
+            </ul>
+        </div>
+
+        <div id="add-friend-div">
+
+        </div>
     </div>
-
-    <div id="add-friend-div">
-
-    </div>
+    -->
 
 <script>
 
@@ -38,22 +82,21 @@
         $.ajax({
             url: "{% url 'compare user and student profile' %}?student_profile_id={{ student_profile.id }}",
             type: "GET",
-            success: function (data) {
-                if(data.context == "Same") {
-                    $("#add-friend-div").append('<p><a href="{% url 'create student profile' %}">Update student profile</a></p>')
-                }
+        success: function (data) {
+                    if(data.context == "Same") {
+                        $("#add-friend-div").append('<p><a href="{% url 'create student profile' %}">Update student profile</a></p>')
+                    }
 
-                else if(data.context == "Friends") {
-                    $("#add-friend-div").append('<p><a href="{% url 'remove friend' %}?student_profile_id={{ student_profile.id }}">Remove friend</a></p>')
-                }
+                    else if(data.context == "Friends") {
+                        $("#add-friend-div").append('<p><a href="{% url 'remove friend' %}?student_profile_id={{ student_profile.id }}">Remove friend</a></p>')
+                    }
 
-                else {
-                    $("#add-friend-div").append('<p><a href="{% url 'send friend request' %}?student_id={{ student_profile.student.id }}">Add friend</a></p>')
+                    else {
+                        $("#add-friend-div").append('<p><a href="{% url 'send friend request' %}?student_id={{ student_profile.student.id }}">Add friend</a></p>')
+                    }
                 }
-            }
+            })
         })
-    })
-
 
 </script>
 

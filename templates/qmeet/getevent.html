@@ -1,53 +1,75 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <p>Here is the information for {{ event.title }}</p>
+    <div id="page-details">
+        <h1>Event Detail</h1>
 
-    <p>The event is being hosted by {{ event.host.username }}</p>
+        <table id="event-details">
+            <tr>
+                <th>Event name</th>
+                <td>{{ event.title }}</td>
+            </tr>
+            <tr>
+                <th>Hosted by</th>
+                <td>{{ event.host.username }}</td>
+            </tr>
+            <tr>
+                <th>Event location</th>
+                <td>{{ event.location }}</td>
+            </tr>
+            <tr>
+                <th>Event start date</th>
+                <td>{{ event.start_date }}</td>
+            </tr>
+            <tr>
+                <th>Event end date</th>
+                <td>{{ event.end_date }}</td>
+            </tr>
+            <tr>
+                <th>Event end date</th>
+                <td>{{ event.end_date }}</td>
+            </tr>
+            <tr>
+                <th>Event capacity</th>
+                <td>{{ event.capacity }}</td>
+            </tr>
+        </table>
 
-    <p>Location of the event: {{ event.location }}</p>
+        {% if event.capacity == 100 %}
+            <p>This event has capacity of exactly 100 people!</p>
+        {% endif %}
 
-    <p>The event starts at{{ event.start_date }}</p>
+        <div id="join-event-div">
 
-    <p>The event ends at {{ event.end_date }}</p>
-
-    <p>The capacity for the event is {{ event.capacity }}</p>
-
-    {% if event.capacity == 100 %}
-        <p>This event has capacity of exactly 100 people!</p>
-    {% endif %}
-
-    <div id="join-event-div">
-
+        </div>
     </div>
 
+    <script>
 
-<script>
+        $(document).ready(function() {
+            $.ajax({
+                url: "{% url 'check user is host' %}",
+                type: "GET",
+                data: {
+                    'event_host_spid': {{ event.host.studentprofile.id }},
+                    'event_id': {{ event.id }}
+                },
+                success: function (data) {
+                    if (data.context == "Host") {
+                        $("#join-event-div").append('<button class="btn" type="button" id="update-event-button"><a href="{% url "update event page" %}?event_id={{ event.id }}">Update event</a></button>')
+                    }
 
-    $(document).ready(function() {
-        $.ajax({
-            url: "{% url 'check user is host' %}",
-            type: "GET",
-            data: {
-                'event_host_spid': {{ event.host.studentprofile.id }},
-                'event_id': {{ event.id }}
-            },
-            success: function (data) {
-                if (data.context == "Host") {
-                    $("#join-event-div").append('<button type="button" id="update-event-button"><a href="{% url "update event page" %}?event_id={{ event.id }}">Update event</a></button>')
+                    else if (data.context == "Neither") {
+                        $("#join-event-div").append('<button class="btn" type="button" id="join-event-button"><a href="{% url "join event" %}?event_id={{ event.id }}">Join event</a></button>')
+                    }
+
+                    else {
+                        $("#join-event-div").append('<button class="btn" type="button" id="leave-event-button"><a href="{% url "leave event" %}?event_id={{ event.id }}">Leave event</a></button>')
+                    }
                 }
-
-                else if (data.context == "Neither") {
-                    $("#join-event-div").append('<button type="button" id="join-event-button"><a href="{% url "join event" %}?event_id={{ event.id }}">Join event</a></button>')
-                }
-
-                else {
-                    $("#join-event-div").append('<button type="button" id="leave-event-button"><a href="{% url "leave event" %}?event_id={{ event.id }}">Leave event</a></button>')
-                }
-            }
+            })
         })
-    })
 
-</script>
+    </script>
 
 {% endblock %}

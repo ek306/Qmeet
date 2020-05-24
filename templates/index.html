@@ -4,49 +4,42 @@
 {% endblock %}
 
 {% block content %}
-    <p>Welcome to index {{ user.username }}</p>
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="h4">Hi, {{ user.username }}</h4>
+        </div>
+    </div>
 
-    <div id="student-profile-div">
+    <div id="student-messages" class="row">
+        <div id="friends" class="col-md-4">
+            <div>
+                <h2 class="h2">Messages</h2>
+                <a href="http://127.0.0.1:8000/messages/inbox/"><span class="glyphicon glyphicon-envelope"></span> you have (6) unread messages</a>
+            </div>
+            <div>
+                <h2 class="h2">Pending Requests</h2>
+                <ul id="received-friend-requests-list"></ul>
+            </div>
+        </div>
+        <div id="upcoming-events" class="col-md-4 events">
+            <h2 class="h2">Upcoming Events</h2>
+            <div id="upcoming-event-details" class="event-details">
+                <h5 class="h4">Joined:</h5>
+                <ul id="joined-events-list"></ul>
+                <h5 class="h4">Hosted:</h5>
+                <ul id="host-events-list"></ul>
+            </div>
+        </div>
+        <div id="recommended-events" class="col-md-4">
+            <h2 class="h2">Recommended Events</h2>
+            <div id="recommended-event-details" class="event-details">
+
+            </div>
+        </div>
 
     </div>
 
-    <p><a href="{% url 'create event' %}">Create event</a></p>
-
-    <p><a href="{% url 'students' %}"> View all students</a></p>
-
-    <p><a href="{% url 'events' %}">View all events</a></p>
-
-    <div>
-        <ul id="student-friend-list"> <p>Friends list:</p>
-
-        </ul>
-    </div>
-
-    <div id="received-friend-requests-div">
-        <ul id="received-friend-requests-list">
-
-        </ul>
-    </div>
-
-    <div id="sent-friend-requests-div">
-        <ul id="sent-friend-requests-list">
-
-        </ul>
-    </div>
-
-    <div id="host-events-div">
-        <p>Events you are hosting:</p>
-        <ul id="host-events-list">
-
-        </ul>
-    </div>
-
-    <div id="joined-events-div">
-        <p>Events you have joined:</p>
-        <ul id="joined-events-list">
-
-        </ul>
-    </div>
+    <div></div>
 
 <script>
 
@@ -56,11 +49,13 @@
             type: "GET",
             success: function (data) {
                 if(data.profile_exists == true) {
-                    $("#student-profile-div").append('<p><a href="{% url 'get student profile' %}?student_id={{ user.id }}">View student profile</a></p>')
+                    //$("#student-profile-div").append('<p><a href="{% url 'get student profile' %}?student_id={{ user.id }}">View student profile</a></p>')
+                    $("#top-nav-bar").append('<li><a href="{% url 'get student profile' %}?student_id={{ user.id }}">My Profile</a></li>')
                 }
 
                 else if(data.profile_exists == false){
-                    $("#student-profile-div").append('<p><a href="{% url 'create student profile' %}">Create student profile</a></p>')
+                    //$("#student-profile-div").append('<p><a href="{% url 'create student profile' %}">Create student profile</a></p>')
+                    $("#top-nav-bar").append('<li><a href="{% url 'create student profile' %}">My Profile</a></li>')
                 }
             }
         })
@@ -74,6 +69,8 @@
             success: function (data) {
                 var i;
                 for(i=0; i<data.friend_requests.length; i++) {
+                    let acceptRequest = "<button class=qmeet-friend-accept-button><img src='../static/images/icon_friendaccept.png'><button>"
+                    let rejectRequest = "<button class=qmeet-friend-accept-button><img src='../static/images/icon_friendreject.png'><button>"
                     $("#received-friend-requests-list").append('<li id=' + data.friend_requests[i].id + '>' + data.friend_requests[i].username + " wants to be your friend!" +
                         '<a href= "{% url 'accept friend request' %}?student_id=' + data.friend_requests[i].id + '">' + "Accept friend request" + '</a>' + '      ' +
                         '<a href= "{% url 'reject friend request' %}?student_id=' + data.friend_requests[i].id + '">' + "Reject friend request" + '</a>' + '</li>')

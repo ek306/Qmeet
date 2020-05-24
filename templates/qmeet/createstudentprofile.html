@@ -1,18 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>STUDENT PROFILE</h2>
+    <h2>Create Student Profile</h2>
     <form id="create-student-profile-form" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        {% if profile.bio == None %}
-            <label>Bio:</label><input name="bio" type="text">
-
+        <div>
+            {% if profile.bio == None %}
+                <label for="textarea1">Bio:</label>
+                <textarea id="textarea1" class="form-control" name="bio" rows="6" columns="50"></textarea>
             {% else %}
-            <label>Bio:</label><input name="bio" value="{{ profile.bio }}" type="text">
-        {% endif %}
-
-        <button type="button" id="create-student-profile-btn">Create student profile</button>
+                <label for="textarea2">Bio:</label>
+                <textarea id="textarea2" class="form-control" name="bio" value="{{ profile.bio }}" rows=""6 columns="50"></textarea>
+            {% endif %}
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary" id="create-student-profile-btn">Create student profile</button>
+        </div>
     </form>
 
     <script>

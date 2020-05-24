@@ -1,28 +1,59 @@
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
-from datetime import datetime
-from .models import Student, Event, Categories, StudentCategories, StudentProfile, AcademicYear, Module, CourseModules
+from .models import Student, Event, Categories, StudentCategories, StudentProfile, AcademicYear, Module, CourseModules, Course
 
 
 class StudentCreationForm(UserCreationForm):
 
+    username = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'})
+    )
+    first_name = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First name'})
+    )
+    last_name = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Lastname'})
+    )
+    email = forms.CharField(
+        widget=forms.EmailInput(attrs={'class': 'form-control datetimepicker-input', 'placeholder': 'Email'})
+    )
+    date_of_birth = forms.CharField(
+        widget=forms.DateTimeInput(attrs={'class': 'form-control', 'placeholder': 'YYYY-MM-DD'})
+    )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Enter Password'})
+    )
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Confirm Password'})
+    )
+
     class Meta:
         model = Student
-        fields = ('username', 'first_name', 'last_name', 'email', 'date_of_birth')
+        fields = ('username', 'first_name', 'last_name', 'email', 'date_of_birth', 'password1', 'password2')
 
 
 class StudentCategoriesForm(ModelForm):
-    #bio = forms.CharField(widget=forms.Textarea)
-    location = forms.CharField(widget=forms.TextInput)
+    # bio = forms.CharField(widget=forms.Textarea)
+    course = forms.ModelChoiceField(
+        queryset=Course.objects.all(),
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
+
+    location = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter location'})
+    )
+
     categories = forms.ModelMultipleChoiceField(
-        widget=forms.CheckboxSelectMultiple,
+        widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}),
         queryset=Categories.objects.all()
     )
+
     year = forms.ModelChoiceField(
-        queryset=AcademicYear.objects.all()
+        queryset=AcademicYear.objects.all(),
+        widget=forms.Select(attrs={'class': 'form-control'})
     )
-    #display_picture = forms.ImageField(required=False)
+    # display_picture = forms.ImageField(required=False)
 
     class Meta:
         model = StudentProfile
@@ -46,11 +77,16 @@ class EventCategoriesForm(ModelForm):
             'categories': forms.CheckboxSelectMultiple(attrs={'class', 'form-control'})
         }
 
+
 class FilterStudentsForm(ModelForm):
-    username = forms.CharField(required=False)
+    username = forms.CharField(
+        required=False,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'})
+    )
+    # username = forms.CharField(required=False)
     categories = forms.ModelMultipleChoiceField(
         required=False,
-        widget=forms.CheckboxSelectMultiple,
+        widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}),
         queryset=Categories.objects.all()
     )
 
@@ -60,10 +96,13 @@ class FilterStudentsForm(ModelForm):
 
 
 class FilterEventsForm(ModelForm):
-    title = forms.CharField(required=False)
+    title = forms.CharField(
+        required=False,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Event name'})
+    )
     categories = forms.ModelMultipleChoiceField(
         required=False,
-        widget=forms.CheckboxSelectMultiple,
+        widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}),
         queryset=Categories.objects.all()
     )
 

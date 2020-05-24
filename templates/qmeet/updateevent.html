@@ -4,47 +4,89 @@
     <h2>UPDATE NEW EVENT</h2>
     <form id="update-event-form" method="POST">
         {% csrf_token %}
-        <div>
-            <label>Title:</label>
-            <input name="title" type="text" value="{{ event.title }}">
-        </div>
-        <div>
-            <label>Location:</label>
-            <input name="location" type="text" value="{{ event.location }}">
-        </div>
-        <div>
-            <label>Capacity:</label>
-            <input name="capacity" type="text" value="{{ event.capacity }}">
-        </div>
-        <div>
-            <label>Categories:</label>
-            {{ form.categories }}
-        </div>
+        <div class="main-page-body form-group">
+            <div>
+                <label for="title">Title:</label>
+                <input class="form-control" id="title" name="title" type="text" value="{{ event.title }}">
+            </div>
+            <div>
+                <label for="location">Location:</label>
+                <input class="form-control" id="location" name="location" type="text" value="{{ event.location }}">
+            </div>
+            <div>
+                <label for="capacity">Capacity:</label>
+                <input class="form-control" id="capacity" name="capacity" type="text" value="{{ event.capacity }}">
+            </div>
+            <div>
+                <label>Categories:</label>
+                {{ form.categories }}
+            </div>
 
-        <table>
-            <tr>
-                <td><label>Start date:</label></td> <td><input name="start-date" type="datetime-local"></td>
-            </tr>
-            <tr>
-                <td><label>End date:</label></td> <td><input name="end-date" type="datetime-local"></td>
-            </tr>
-        </table>
-        <button type="button" id="update-event-btn">Update event</button>
+            <div>
+                <label for="datetimepicker1">Start date:</label>
+                <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                    <input id="start-date" name="start-date" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1">
+                    <span class="input-group-addon" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div>
+                <label for="datetimepicker2">End date:</label>
+                <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                    <input id="end-date" name="end-date" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2">
+                    <span class="input-group-addon" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+
+ <!--           <table>
+                <tr>
+                    <td><label for="start-date">Start date:</label></td> <td><input id="start-date" name="start-date" type="datetime-local"></td>
+                </tr>
+                <tr>
+                    <td><label for="end-date">End date:</label></td> <td><input id="end-date" name="end-date" type="datetime-local"></td>
+                </tr>
+            </table>-->
+
+
+            <button class="btn btn-primary" type="button" id="update-event-btn">Update event</button>
+        </div>
     </form>
 
     <script>
-    $(document).ready(function() {
-        $("#update-event-btn").click(function() {
-            $.ajax({
-                url: "{% url 'update event' %}?event_id={{ event.id }}",
-                type: "POST",
-                data: $("#update-event-form").serializeArray(),
-                success: function (data) {
+        $(document).ready(function() {
+                $('#datetimepicker1').datetimepicker({
+                    //locale: 'en-gb',
+                    format: 'YYYY-MM-DD HH:MM'
+                });
+                $('#datetimepicker2').datetimepicker({
+                    //locale: 'en-gb',
+                    format: 'YYYY-MM-DD HH:MM'
+                });
 
-                }
+               $("#create-event-btn").click(function() {
+                   $.ajax({
+                       url: "{% url 'new event' %}",
+                       method: "POST",
+                       data: $("#create-event-form").serializeArray(),
+                       success: function(data) {
+                       }
+                   });
+               });
+
+               $("#update-event-btn").click(function() {
+                   $.ajax({
+                    url: "{% url 'update event' %}?event_id={{ event.id }}",
+                    type: "POST",
+                    data: $("#update-event-form").serializeArray(),
+                    success: function (data) {
+
+                    }
+                })
             })
         })
-    })
     </script>
 
 {% endblock %}

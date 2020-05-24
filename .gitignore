@@ -6,4 +6,6 @@ venv/
 .DS_Store
 .idea
 /.idea
-
+qmeet/__pycache__/
+__pycache__/
+*/__pycache__/

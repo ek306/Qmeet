@@ -3,12 +3,12 @@
 
     <h2>CREATE NEW EVENT</h2>
     <div class="form-group" >
-    <div style="width: 25%">
+    <div class="main-page-body">
         <form id="create-event-form" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
 
-            <div class="row">
+            <div>
                 <label>Start date:</label>
                 <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
                     <input name="start-date" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1">
@@ -17,7 +17,7 @@
                     </span>
                 </div>
             </div>
-            <div class="row">
+            <div>
                 <label>End date:</label>
                 <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
                     <input name="end-date" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2">
@@ -27,9 +27,7 @@
                 </div>
             </div>
             <div class="submit-row">
-                <button type="button" class="btn btn-primary" id="create-event-btn">
-                    <span class="glyphicon glyphicon-floppy-save"></span> Create event
-                </button>
+                <button type="button" class="btn btn-primary" id="create-event-btn"></button>
             </div>
         </form>
     </div>

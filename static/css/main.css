@@ -1,24 +1,43 @@
+.profile-left{
+    width: 40%;
+    float: left;
+}
 
+.profile-right{
+    width: 50%;
+    float:left;
+}
 
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
+ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
 
+.event-details{
+    border: 1px solid;
+    border-radius: 10px;
+    box-shadow: 1px 2px;
+    width: 100%;
+    height: 400px;
+}
 
+joined-events-list{
+}
 
+.navbar {
+    min-height: 75px;
+}
 
+#page-details th {
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
 
+.main-page-body{
+    width:40%;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+button {
+    margin-top: 10px;
+}
