@@ -2,7 +2,7 @@
 {% block content %}
 
     <div id="page-details">
-        <h1>Event Detail</h1>
+        <h1>Event Details</h1>
 
         <table id="event-details">
             <tr>
@@ -11,7 +11,7 @@
             </tr>
             <tr>
                 <th>Hosted by</th>
-                <td>{{ event.host.username }}</td>
+                <td><a href="{% url 'get student profile' %}?student_id={{ event.host.id }}">{{ event.host.username }}</a></td>
             </tr>
             <tr>
                 <th>Event location</th>
@@ -33,11 +33,21 @@
                 <th>Event capacity</th>
                 <td>{{ event.capacity }}</td>
             </tr>
+            <tr>
+                <th>Event Categories</th>
+                <td>
+                    {% for category in categories %}
+                        <span>{{ category.0 }}</span><br/>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Attendees</th>
+                {% for student in event.attendees.all %}
+                    <td><a href="{% url 'get student profile' %}?student_id={{ student.id }}">{{ student.username }}</a></td>
+                {% endfor %}
+            </tr>
         </table>
-
-        {% if event.capacity == 100 %}
-            <p>This event has capacity of exactly 100 people!</p>
-        {% endif %}
 
         <div id="join-event-div">
 

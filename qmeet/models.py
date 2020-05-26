@@ -167,3 +167,7 @@ class GetTimetableForUser(models.Model):
     end_hour = models.IntegerField
     abbreviated_day = models.CharField(max_length=3)
     duration = models.IntegerField
+
+
+class SelectedCategories(models.Model):
+    categories = models.CharField(primary_key=True, max_length=255)

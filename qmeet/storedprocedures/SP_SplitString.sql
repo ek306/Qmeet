@@ -12,7 +12,7 @@ BEGIN
     SET front = SUBSTRING_INDEX(Value,',',1);
     SET frontlen = LENGTH(front);
     SET TempValue = TRIM(front);
-    INSERT INTO selected_categories (categories) VALUES (TempValue);
+    INSERT INTO qmeet.qmeet_selectedcategories (categories) VALUES (TempValue);
     SET Value = INSERT(Value,1,frontlen + 1,'');
     END LOOP;
     END$$

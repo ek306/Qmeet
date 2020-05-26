@@ -27,4 +27,6 @@
 {% else %}
 <p>{% trans "No messages." %}</p>
 {% endif %}
+    <h3><a href="{% url 'messages_outbox' %}">View outbox</a></h3>
+    <h3><a href="{% url 'messages_compose' %}">Compose a message</a></h3>
 {% endblock %}

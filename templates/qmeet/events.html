@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<div class="main-page-body">
     <form id="filter-events-form" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
@@ -12,13 +12,13 @@
 
         </ul>
     </div>
-
+    <h2>All events:</h2>
     <div id="event-div">
         <ul id="event-list">
 
         </ul>
     </div>
-
+</div>
 <script>
     $(document).ready(function(){
         $.ajax({

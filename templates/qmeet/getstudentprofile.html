@@ -1,22 +1,21 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
     <h2><span style="letter-spacing: 2px;">Student Profile</span></h2>
 
         <div class="profile-left">
             <div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                <img src="{% static 'images/default-avatar.jpg' %}" width="35%" height="35%">
             </div>
             <div>
-                <div>
-                    <div class="profile-interests">
-                        <p>Interests</p>
-                            <ul id="student-categories">
 
-                            </ul>
-                        <p>Friends</p>
-                        <div id="add-friend-div">
-                        </div>
-                    </div>
+                <div class="profile-interests">
+                    <h3>Interests:</h3>
+                    <ul id="student-categories">
+
+                    </ul>
+                    <div id="add-friend-div"></div>
+                    <div id="view-student-timetable"><a href="{% url 'timetable' %}?student_id={{ student_profile.student.id }}">View timetable</a></div>
                 </div>
             </div>
         </div>

@@ -14,11 +14,13 @@
         <div id="friends" class="col-md-4">
             <div>
                 <h2 class="h2">Messages</h2>
-                <a href="http://127.0.0.1:8000/messages/inbox/"><span class="glyphicon glyphicon-envelope"></span> you have (6) unread messages</a>
+                <a href="http://127.0.0.1:8000/messages/inbox/"><span class="glyphicon glyphicon-envelope">&nbsp;</span><span id="unread-count"> unread messages</span></a>
             </div>
             <div>
                 <h2 class="h2">Pending Requests</h2>
                 <ul id="received-friend-requests-list"></ul>
+                <h2 class="h2">Sent Requests</h2>
+                <ul id="sent-friend-requests-list"></ul>
             </div>
         </div>
         <div id="upcoming-events" class="col-md-4 events">
@@ -33,7 +35,7 @@
         <div id="recommended-events" class="col-md-4">
             <h2 class="h2">Recommended Events</h2>
             <div id="recommended-event-details" class="event-details">
-
+                <ul id="recommended-event-list"></ul>
             </div>
         </div>
 
@@ -133,6 +135,31 @@
                     $("#joined-events-list").append('<li id=' + data.joined_events[i].id + '>' + '<a href="{% url 'get event' %}?event_id=' + data.joined_events[i].id + '">'
                         + data.joined_events[i].title + '</a>' + '</li>')
                 }
+            }
+        })
+    })
+
+    $(document).ready(function () {
+        $.ajax({
+            url: "{% url 'get recommended events' %}",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                var i;
+                for(i=0; i<data.recommended_events.length; i++) {
+                    $("#recommended-event-list").append('<li id=' + data.recommended_events[i][0] + '>' + '<a href="{% url 'get event' %}?event_id=' + data.recommended_events[i][0] + '">'
+                    + data.recommended_events[i][1] + '</a>' + '</li>')
+                }
+            }
+        })
+    })
+
+    $(document).ready(function () {
+        $.ajax({
+            url: "{% url 'get unread messages' %}",
+            type: "GET",
+            success: function (data) {
+                $("#unread-count").prepend(data.message_count)
             }
         })
     })

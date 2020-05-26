@@ -29,7 +29,7 @@ joined-events-list{
     min-height: 75px;
 }
 
-#page-details th {
+#page-details th, td {
     padding-right: 20px;
     padding-bottom: 10px;
 }

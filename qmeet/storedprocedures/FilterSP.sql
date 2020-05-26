@@ -5,7 +5,7 @@ CREATE DEFINER=`qmeet`@`%` PROCEDURE `FilterSP`(
 )
 BEGIN
 	SET SQL_SAFE_UPDATES = 0;
-	DELETE FROM selected_categories;
+	DELETE FROM qmeet.qmeet_selectedcategories;
 	call SP_SplitString(Categories);
     
 	IF(Username <> '' AND Categories = '')
@@ -20,7 +20,7 @@ BEGIN
 		join qmeet.qmeet_categories qc on qc.id = qsc.categories_id
 		left join qmeet.qmeet_studentprofile qsp on qsp.id = qsc.student_profile_id
 		left join qmeet.qmeet_student qs on qs.id = qsp.student_id
-		where qc.category in (select * from qmeet.selected_categories)
+		where qc.category in (select * from qmeet.qmeet_selectedcategories)
 		and qs.username LIKE concat("%", Username, "%");
     
     ELSE
@@ -28,7 +28,7 @@ BEGIN
 		join qmeet.qmeet_categories qc on qc.id = qsc.categories_id
 		left join qmeet.qmeet_studentprofile qsp on qsp.id = qsc.student_profile_id
 		left join qmeet.qmeet_student qs on qs.id = qsp.student_id
-		where qc.category in (select * from qmeet.selected_categories);
+		where qc.category in (select * from qmeet.qmeet_selectedcategories);
 	END IF;
 END$$
 DELIMITER ;
