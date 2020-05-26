@@ -26,10 +26,6 @@
                 <td>{{ event.end_date }}</td>
             </tr>
             <tr>
-                <th>Event end date</th>
-                <td>{{ event.end_date }}</td>
-            </tr>
-            <tr>
                 <th>Event capacity</th>
                 <td>{{ event.capacity }}</td>
             </tr>
@@ -43,9 +39,11 @@
             </tr>
             <tr>
                 <th>Attendees</th>
+            <td>
                 {% for student in event.attendees.all %}
-                    <td><a href="{% url 'get student profile' %}?student_id={{ student.id }}">{{ student.username }}</a></td>
+                    <p><a href="{% url 'get student profile' %}?student_id={{ student.id }}">{{ student.username }}</a></p>
                 {% endfor %}
+            </td>
             </tr>
         </table>
 

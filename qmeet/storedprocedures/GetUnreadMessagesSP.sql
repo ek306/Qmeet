@@ -1,6 +1,6 @@
 DELIMITER $$
 CREATE DEFINER=`qmeet`@`%` PROCEDURE `GetUnreadMessagesSP`(
-	IN UserID int(10)
+	IN UserID int
 )
 BEGIN
 	select count(*) as 'un_read', subject, sender_id from django_messages_message

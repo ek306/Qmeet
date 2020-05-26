@@ -1,4 +1,9 @@
+from django.conf import settings
+from django.conf.urls import url
+from django.conf.urls.static import static
 from django.urls import path
+from django.views.static import serve
+
 from . import views
 
 
@@ -40,4 +45,8 @@ urlpatterns = [
     path('timetable/', views.timetable, name='timetable'),
     path('get_student_timetable', views.get_student_timetable, name="get student timetable"),
     path('get_unread_messages', views.get_unread_messages, name="get unread messages"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)', serve, {'document_root': settings.MEDIA_ROOT, }),
+    ]

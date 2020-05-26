@@ -75,22 +75,27 @@ def new_student_profile(request):
     """
     user = request.user
     if request.method == 'POST':
-        form = StudentCategoriesForm(request.POST)
+        form = StudentCategoriesForm(request.POST, request.FILES)
         if form.is_valid():
             student = user
             bio = request.POST['bio']
             location = form.cleaned_data['location']
             course = form.cleaned_data['course']
             year = form.cleaned_data['year']
-            # display_picture = form.cleaned_data['display_picture']
+            display_picture = request.FILES.get('display_picture')
 
             try:
                 student_profile = get_profile_by_student(user)
-                StudentProfile.objects.filter(student=student).update(student=student, course=course, bio=bio, location=location)
+                StudentProfile.objects.filter(student=student).update \
+                        (
+                        student=student, course=course, bio=bio, location=location, display_picture=display_picture
+                    )
                 StudentCategories.objects.filter(student_profile=student_profile).delete()
 
             except StudentProfile.DoesNotExist:
-                student_profile = StudentProfile(student=student, course=course, bio=bio, location=location)  # , display_picture=display_picture)
+                student_profile = StudentProfile(
+                    student=student, course=course, bio=bio, location=location, display_picture=display_picture
+                )
                 student_profile.save()
 
             for categories in form.cleaned_data['categories']:
@@ -101,8 +106,7 @@ def new_student_profile(request):
             if not student_profile_year:
                 student_profile_year = StudentProfileYear(student_profile=student_profile, year=year)
                 student_profile_year.save()
-            # display_picture = form.cleaned_data['display_picture']
-            return HttpResponseRedirect('/qmeet')
+            return HttpResponseRedirect("/qmeet")
 
 
 @login_required()

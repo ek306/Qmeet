@@ -1,4 +1,4 @@
-SELECT * FROM qmeet.qmeet_studentprofile;DELIMITER $$
+DELIMITER $$
 CREATE DEFINER=`qmeet`@`%` PROCEDURE `GetTimetableForUserSP`(
 	IN StudentId integer
 )

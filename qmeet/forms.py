@@ -34,7 +34,6 @@ class StudentCreationForm(UserCreationForm):
 
 
 class StudentCategoriesForm(ModelForm):
-    # bio = forms.CharField(widget=forms.Textarea)
     course = forms.ModelChoiceField(
         queryset=Course.objects.all(),
         widget=forms.Select(attrs={'class': 'form-control'})
@@ -49,15 +48,16 @@ class StudentCategoriesForm(ModelForm):
         queryset=Categories.objects.all()
     )
 
+    display_picture = forms.ImageField(widget=forms.FileInput, required=False)
+
     year = forms.ModelChoiceField(
         queryset=AcademicYear.objects.all(),
         widget=forms.Select(attrs={'class': 'form-control'})
     )
-    # display_picture = forms.ImageField(required=False)
 
     class Meta:
         model = StudentProfile
-        fields = ['course', 'year', 'location', 'categories']  # , 'display_picture']
+        fields = ['course', 'year', 'location', 'categories', 'display_picture']
 
 
 class EventCategoriesForm(ModelForm):

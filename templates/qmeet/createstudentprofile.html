@@ -3,7 +3,7 @@
 {% block content %}
     <h2>Create Student Profile</h2>
     <div class="main-page-body">
-        <form id="create-student-profile-form" method="POST" action="{% url 'new student profile' %}">
+        <form id="create-student-profile-form" method="POST" action="{% url 'new student profile' %}" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <div>
@@ -20,20 +20,4 @@
             </div>
         </form>
     </div>
-
- <!--   <script>
-        $(document).ready(function() {
-            $("#create-student-profile-btn").click(function() {
-                $.ajax({
-                    url: "{% url 'new student profile' %}",
-                    method: "POST",
-                    data: $("#create-student-profile-form").serializeArray(),
-                    success: function(data) {
-
-                    }
-                });
-            });
-       });
-    </script> -->
-
 {% endblock %}
