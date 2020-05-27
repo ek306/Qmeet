@@ -1,3 +1,20 @@
+body{
+    height: 100%;
+    margin: 0;
+    background: -webkit-gradient(linear, left top, left bottom, from(ghostwhite)) fixed;
+    color: #0d3273;
+}
+
+.navbar-nav {
+    height: 75px;
+    padding-top: 15px;
+}
+
+.navbar-inverse{
+    background-color: #0d3273;
+    border-color: #0d3273;
+}
+
 .profile-left{
     width: 40%;
     float: left;
@@ -15,11 +32,67 @@ ul{
 }
 
 .event-details{
-    border: 1px solid;
-    border-radius: 10px;
-    box-shadow: 1px 2px;
+box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.034),
+    0 1px 1px rgba(0, 0, 0, 0.048),
+    0 1px 1px rgba(0, 0, 0, 0.06),
+    0 1px 1px rgba(0, 0, 0, 0.072),
+    0 1px 1px rgba(0, 0, 0, 0.086),
+    0 20px 16px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    background: white;
     width: 100%;
-    height: 400px;
+    height: 500px;
+}
+
+#upcoming-events {
+box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.034),
+    0 1px 1px rgba(0, 0, 0, 0.048),
+    0 1px 1px rgba(0, 0, 0, 0.06),
+    0 1px 1px rgba(0, 0, 0, 0.072),
+    0 1px 1px rgba(0, 0, 0, 0.086),
+    0 20px 16px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    width: 100%;
+    height: 250px;
+}
+
+#hosted-events {
+box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.034),
+    0 1px 1px rgba(0, 0, 0, 0.048),
+    0 1px 1px rgba(0, 0, 0, 0.06),
+    0 1px 1px rgba(0, 0, 0, 0.072),
+    0 1px 1px rgba(0, 0, 0, 0.086),
+    0 20px 16px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    width: 100%;
+    height: 250px;
+    padding-top: 10px;
+}
+
+#recommended-events{
+box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.034),
+    0 1px 1px rgba(0, 0, 0, 0.048),
+    0 1px 1px rgba(0, 0, 0, 0.06),
+    0 1px 1px rgba(0, 0, 0, 0.072),
+    0 1px 1px rgba(0, 0, 0, 0.086),
+    0 20px 16px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    width: 100%;
+    height: 500px;
+}
+
+#upcoming-header{
+    width: 100%;
+    background-color: #0d3273;
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+    line-height: 40px;
+    padding-left: 10px;
 }
 
 .navbar {
