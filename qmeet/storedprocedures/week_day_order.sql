@@ -1,0 +1,1 @@
+CREATE ALGORITHM=UNDEFINED DEFINER=`qmeet`@`%` SQL SECURITY DEFINER VIEW `week_day_order` AS select 'Monday' AS `day`,1 AS `order` union select 'Tuesday' AS `day`,2 AS `order` union select 'Wednesday' AS `day`,3 AS `order` union select 'Thursday' AS `day`,4 AS `order` union select 'Friday' AS `day`,5 AS `order`;
