@@ -1,4 +1,9 @@
+from django.conf import settings
+from django.conf.urls import url
+from django.conf.urls.static import static
 from django.urls import path
+from django.views.static import serve
+
 from . import views
 
 
@@ -13,8 +18,8 @@ urlpatterns = [
     path('update_event', views.update_event, name='update event'),
     path('students/', views.students, name="students"),
     path('events/', views.events, name="events"),
-    path('allstudents/', views.StudentListView.as_view()),
-    path('allevents/', views.EventListView.as_view()),
+#    path('allstudents/', views.StudentListView.as_view()),
+#    path('allevents/', views.EventListView.as_view()),
     path('get_friend_list', views.get_friend_list, name="get friend list"),
     path('get_all_events', views.get_all_events, name="get all events"),
     path('getevent/', views.get_event, name='get event'),
@@ -36,6 +41,12 @@ urlpatterns = [
     path('filter_student', views.filter_student, name='filter students'),
     path('filter_events', views.filter_events, name='filter events'),
     path('get_joined_events', views.get_joined_events, name='get joined events'),
+    path('get_recommended_events', views.get_recommended_events, name='get recommended events'),
     path('timetable/', views.timetable, name='timetable'),
-    path('get_timetable', views.get_timetable, name="get timetable"),
-]
+    path('get_student_timetable', views.get_student_timetable, name="get student timetable"),
+    path('get_unread_messages', views.get_unread_messages, name="get unread messages"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)', serve, {'document_root': settings.MEDIA_ROOT, }),
+    ]

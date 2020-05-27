@@ -18,7 +18,7 @@
 
         td {
             height: 50px;
-            width: 100px;
+            width: 150px;
             padding: 10px 10px;
             text-align: center;
             border: none;
@@ -56,7 +56,7 @@
 
 
     </style>
-
+    <h2>Timetable</h2>
     <table>
         <thead>
             <tr>
@@ -141,7 +141,7 @@
     <script>
         $(document).ready(function(){
             $.ajax({
-                url: "{% url 'get timetable' %}",
+                url: "{% url 'get student timetable' %}?student_id={{ student_id }}",
                 type: "GET",
                 contentType: "application/json",
                 success: function(data) {

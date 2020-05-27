@@ -4,7 +4,7 @@
     <h2>CREATE NEW EVENT</h2>
     <div class="form-group" >
     <div class="main-page-body">
-        <form id="create-event-form" method="POST">
+        <form id="create-event-form" method="POST" action="{% url 'new event' %}">
             {% csrf_token %}
             {{ form.as_p }}
 
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="submit-row">
-                <button type="button" class="btn btn-primary" id="create-event-btn">Create Event</button>
+                <button type="submit" class="btn btn-primary" id="create-event-btn">Create Event</button>
             </div>
         </form>
     </div>
@@ -35,16 +35,17 @@
 
    <script>
        $(document).ready(function() {
-            $('#datetimepicker1').datetimepicker({
-                //locale: 'en-gb',
-                format: 'YYYY-MM-DD HH:MM'
-            });
-            $('#datetimepicker2').datetimepicker({
-                //locale: 'en-gb',
-                format: 'YYYY-MM-DD HH:MM'
-            });
+           $('#datetimepicker1').datetimepicker({
+               //locale: 'en-gb',
+               format: 'YYYY-MM-DD HH:MM'
+           });
+           $('#datetimepicker2').datetimepicker({
+               //locale: 'en-gb',
+               format: 'YYYY-MM-DD HH:MM'
+           });
+       });
 
-           $("#create-event-btn").click(function() {
+    /*           $("#create-event-btn").click(function() {
                $.ajax({
                    url: "{% url 'new event' %}",
                    method: "POST",
@@ -53,6 +54,6 @@
                    }
                });
            });
-       });
+       }); */
     </script>
 {% endblock %}

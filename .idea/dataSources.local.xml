@@ -13,5 +13,10 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="Django default" uuid="459e58df-92d2-4a26-99b8-ad1f8fa07bf2">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
+      <user-name>qmeet</user-name>
+      <schema-mapping />
+    </data-source>
   </component>
 </project>

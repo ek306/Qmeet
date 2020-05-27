@@ -100,8 +100,7 @@ class StudentProfile(models.Model):
     bio = models.TextField(max_length=500, blank=True)
     location = models.TextField(max_length=30, blank=True)
     friends = models.ManyToManyField("StudentProfile", blank=True)
-    #categories = models.ManyToManyField(Categories, through="StudentCategories")
-    #display_picture = models.ImageField(upload_to='profile_images', blank=True)
+    display_picture = models.ImageField(upload_to='images/', blank=True, default='default-avatar.jpg')
 
     def __str__(self):
         return self.student.username
@@ -167,3 +166,7 @@ class GetTimetableForUser(models.Model):
     end_hour = models.IntegerField
     abbreviated_day = models.CharField(max_length=3)
     duration = models.IntegerField
+
+
+class SelectedCategories(models.Model):
+    categories = models.CharField(primary_key=True, max_length=255)
