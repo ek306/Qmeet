@@ -94,6 +94,16 @@
             })
         })
 
+    $(document).ready(function(){
+        $.ajax({
+            url: "{% url 'get friend list' %}?student_id={{ student_profile.student.id }}",
+            type: "GET",
+            success: function (data) {
+                alert("SUCCESS")
+            }
+        })
+    })
+
 </script>
 
 {% endblock %}

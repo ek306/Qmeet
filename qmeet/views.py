@@ -248,9 +248,9 @@ def get_friend_list(request):
     of friends as a JsonResponse to be rendered dynamically
     on the HTML
     """
-    user = request.user
+    student_id = request.GET.get('student_id')
     cursor = connection.cursor()
-    cursor.execute('call GetFriendsSP(' + str(user.id) + ')')
+    cursor.execute('call GetFriendsSP(' + str(student_id) + ')')
     filtered_users = cursor.fetchall()
     return JsonResponse({
         'students': list(filtered_users)
@@ -684,3 +684,23 @@ def get_unread_messages(request):
     return JsonResponse({
         'message_count': unread_message_count
     })
+
+
+@login_required()
+def render_student_profile(request):
+    user = request.user
+    student = request.user
+    try:
+        user_sp = get_profile_by_student(user)
+        student_sp = get_profile_by_student(student)
+        context = {
+            'student_profile': student_sp,
+            'user_profile': user_sp
+        }
+        return render(request, 'qmeet/getstudentprofile.html', context)
+
+    except StudentProfile.DoesNotExist:
+        form = StudentCategoriesForm()
+        context = {'form': form}
+        return render(request, 'qmeet/createstudentprofile.html', context)
+

@@ -45,6 +45,7 @@ urlpatterns = [
     path('timetable/', views.timetable, name='timetable'),
     path('get_student_timetable', views.get_student_timetable, name="get student timetable"),
     path('get_unread_messages', views.get_unread_messages, name="get unread messages"),
+    path('render_student_profile', views.render_student_profile, name="render student profile")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:
     urlpatterns += [
