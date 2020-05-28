@@ -2,17 +2,18 @@
 
 {% block content %}
     <h2>Create Student Profile</h2>
+    {{ profile.bio }}
     <div class="main-page-body">
         <form id="create-student-profile-form" method="POST" action="{% url 'new student profile' %}" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <div>
-                {% if profile.bio == None %}
+                {% if profile == None %}
                     <label for="textarea1">Bio:</label>
                     <textarea id="textarea1" class="form-control" name="bio" rows="6" columns="50"></textarea>
                 {% else %}
                     <label for="textarea2">Bio:</label>
-                    <textarea id="textarea2" class="form-control" name="bio" value="{{ profile.bio }}" rows=""6 columns="50"></textarea>
+                    <textarea id="textarea2" class="form-control" name="bio" rows=""6 columns="50">{{ profile.bio }}</textarea>
                 {% endif %}
             </div>
             <div>
