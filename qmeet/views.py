@@ -126,15 +126,10 @@ class CreateEventView(CreateView):
     form_class = EventCategoriesForm
 
 
-# def createevent(request):
-#    form = EventCategoriesForm()
-#    return render(request, 'qmeet/createevent.html', {'form': form})
-
-
 @login_required()
 def updateevent(request):
     """
-    Renders updatevent.html with the same form used for creating an event
+    Renders updateevent.html with the same form used for creating an event
     """
     event_id = request.GET['event_id']
     event = Event.objects.get(id=event_id)
@@ -467,7 +462,18 @@ def leave_event(request):
     event.attendees.remove(user)
     student_event = StudentEvents.objects.get(student=user, event=event)
     student_event.delete()
-    return HttpResponse("You have left the event")
+    return redirect('index')
+
+
+@login_required()
+def cancel_event(request):
+    """
+    Deletes and event from the database
+    """
+    event_id = request.GET.get('event_id')
+    event = Event.objects.get(id=event_id)
+    event.delete()
+    return redirect('index')
 
 
 @login_required()
@@ -688,6 +694,13 @@ def get_unread_messages(request):
 
 @login_required()
 def render_student_profile(request):
+    """
+    Used to render createstudentprofile.html if the student has not created a
+    profile yet, or redirects to getstudentprofile.html with the current user's
+    student details when the "My Profile" item of the navigation bar is clicked
+
+    This is used to
+    """
     user = request.user
     student = request.user
     try:
