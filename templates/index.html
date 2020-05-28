@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block title %}
     index
 {% endblock %}
@@ -13,13 +15,13 @@
     <div id="student-messages" class="row">
         <div id="friends" class="col-md-4">
             <div>
-                <h2 class="h2">Messages</h2>
+                <h3 class="h3">Messages</h3>
                 <a href="http://127.0.0.1:8000/messages/inbox/"><span class="glyphicon glyphicon-envelope">&nbsp;</span><span id="unread-count"> unread messages</span></a>
             </div>
             <div>
-                <h2 class="h2">Pending Requests</h2>
+                <h3 class="h3">Pending Friend Requests</h3>
                 <ul id="received-friend-requests-list"></ul>
-                <h2 class="h2">Sent Requests</h2>
+                <h3 class="h3">Sent Requests</h3>
                 <ul id="sent-friend-requests-list"></ul>
             </div>
         </div>
@@ -70,13 +72,14 @@
             type: "GET",
             dataType: "json",
             success: function (data) {
-                var i;
-                for(i=0; i<data.friend_requests.length; i++) {
-                    let acceptRequest = "<button class=qmeet-friend-accept-button><img src='../static/images/icon_friendaccept.png'><button>"
-                    let rejectRequest = "<button class=qmeet-friend-accept-button><img src='../static/images/icon_friendreject.png'><button>"
-                    $("#received-friend-requests-list").append('<li id=' + data.friend_requests[i].id + '>' + data.friend_requests[i].username + " wants to be your friend!" +
-                        '<a href= "{% url 'accept friend request' %}?student_id=' + data.friend_requests[i].id + '">' + "Accept friend request" + '</a>' + '      ' +
-                        '<a href= "{% url 'reject friend request' %}?student_id=' + data.friend_requests[i].id + '">' + "Reject friend request" + '</a>' + '</li>')
+
+                for(let i=0; i<data.friend_requests.length; i++) {
+                    let acceptRequest = data.friend_requests[i].username +
+                                            '<a href="{% url 'accept friend request' %}?student_id=' + data.friend_requests[i].id + '">' +
+                                            '<img src="{% static "images/icon_friendaccept.png" %}" width=25px height=25px></a>'
+                    let rejectRequest =     '<a href="{% url 'reject friend request' %}?student_id=' + data.friend_requests[i].id + '">' +
+                                            '<img src="{% static "images/icon_friendreject.png" %}" width=25px height=25px></a>'
+                    $("#received-friend-requests-list").append('<li>' + acceptRequest +  rejectRequest + '</li>');
                 }
             }
         })
