@@ -63,7 +63,7 @@
 
     $(document).ready(function() {
         $.ajax({
-            url: "{% url 'get student categories' %}?student_profile_id={{ student_profile.id }}",
+            url: "{% url 'get student categories' %}?student_id={{ student_profile.student.id }}",
             type: "GET",
             success: function (data) {
                 var i;

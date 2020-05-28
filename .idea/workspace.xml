@@ -20,60 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0bced4a5-de5e-4f4a-944a-e0a4a234e65b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Readme for MYSQL setup.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/images/Cat03.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/images/Cat03_A3VmNx3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/images/default-avatar.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qmeet/migrations/0002_auto_storedprocedure.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qmeet/migrations/0003_auto_reference_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qmeet/view/week_day_order.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/qmusocialnetwork.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/qmusocialnetwork.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_messages/templates/django_messages/inbox.html" beforeDir="false" afterPath="$PROJECT_DIR$/django_messages/templates/django_messages/inbox.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0002_studentprofile_display_picture.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0003_selectedcategories.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0004_auto_20200525_1233.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0005_auto_qmeet_schema.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0006_auto_20200526_0805.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0007_auto_qmeet_stored_procs.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0008_delete_selectedcategories.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0009_auto_storedproc_filtereventsp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0010_selectedcategories.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0011_auto_storedproc_filtersp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0012_delete_selectedcategories.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0013_selectedcategories.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/migrations/0014_auto_storedproc_get_friendsp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/storedprocedures/FilterEventSP.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/storedprocedures/FilterSP.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/storedprocedures/GetFriendsSP.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/storedprocedures/GetTimetableForUserSP.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/storedprocedures/GetUnreadMessagesSP.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/storedprocedures/SP_SplitString.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/storedprocedures/academic_year.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/storedprocedures/categories.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/storedprocedures/course.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/storedprocedures/coursemodules.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/storedprocedures/department.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/storedprocedures/module.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/storedprocedures/semester.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/storedprocedures/semestermodule.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/storedprocedures/week_day_order.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmeet/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qmeet/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmeet/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qmusocialnetwork/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/qmusocialnetwork/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/qmscampus.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/qmscampus.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/qmeet/createevent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/createevent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/qmeet/createstudentprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/createstudentprofile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/qmeet/events.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/events.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/qmeet/getevent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/getevent.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/qmeet/getstudentprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/getstudentprofile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/qmeet/students.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/students.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/qmeet/timetable.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/timetable.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/qmeet/updateevent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/qmeet/updateevent.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -167,7 +120,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="qmusocialnetwork.settings" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="D:\git\src\django\qmeet-env\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -260,6 +213,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1590599706462" />
+    <state x="484" y="0" key="#qmusocialnetwork" timestamp="1590624646383">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="484" y="0" key="#qmusocialnetwork/0.0.1536.824@0.0.1536.824" timestamp="1590624646383" />
     <state width="1066" height="466" key="DebuggerActiveHint" timestamp="1590458650776">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -272,38 +229,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1590261606316" />
-    <state width="1478" height="207" key="GridCell.Tab.0.bottom" timestamp="1590484840932">
+    <state width="1493" height="179" key="GridCell.Tab.0.bottom" timestamp="1590640890240">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1478" height="207" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590484840932" />
-    <state width="1478" height="207" key="GridCell.Tab.0.center" timestamp="1590484840932">
+    <state width="1493" height="179" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590640890240" />
+    <state width="1493" height="179" key="GridCell.Tab.0.center" timestamp="1590640890240">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1478" height="207" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590484840932" />
-    <state width="1478" height="207" key="GridCell.Tab.0.left" timestamp="1590484840932">
+    <state width="1493" height="179" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590640890240" />
+    <state width="1493" height="179" key="GridCell.Tab.0.left" timestamp="1590640890240">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1478" height="207" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590484840932" />
-    <state width="1478" height="207" key="GridCell.Tab.0.right" timestamp="1590484840932">
+    <state width="1493" height="179" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590640890240" />
+    <state width="1493" height="179" key="GridCell.Tab.0.right" timestamp="1590640890240">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1478" height="207" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590484840932" />
-    <state width="1478" height="177" key="GridCell.Tab.1.bottom" timestamp="1590474205240">
+    <state width="1493" height="179" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590640890240" />
+    <state width="1493" height="179" key="GridCell.Tab.1.bottom" timestamp="1590640998777">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1478" height="177" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590474205240" />
-    <state width="1478" height="177" key="GridCell.Tab.1.center" timestamp="1590474205240">
+    <state width="1493" height="179" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590640998777" />
+    <state width="1493" height="179" key="GridCell.Tab.1.center" timestamp="1590640998777">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1478" height="177" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1590474205240" />
-    <state width="1478" height="177" key="GridCell.Tab.1.left" timestamp="1590474205240">
+    <state width="1493" height="179" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1590640998777" />
+    <state width="1493" height="179" key="GridCell.Tab.1.left" timestamp="1590640998777">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1478" height="177" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1590474205240" />
-    <state width="1478" height="177" key="GridCell.Tab.1.right" timestamp="1590474205240">
+    <state width="1493" height="179" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1590640998777" />
+    <state width="1493" height="179" key="GridCell.Tab.1.right" timestamp="1590640998777">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1478" height="177" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1590474205240" />
+    <state width="1493" height="179" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1590640998777" />
     <state x="0" y="0" width="1536" height="824" key="MergeDialog" timestamp="1590538058313">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -331,6 +288,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/qmeet/views.py</url>
+          <line>477</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

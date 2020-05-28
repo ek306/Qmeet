@@ -57,32 +57,32 @@
 
     <script>
         $(document).ready(function() {
-                $('#datetimepicker1').datetimepicker({
-                    //locale: 'en-gb',
-                    format: 'YYYY-MM-DD HH:MM'
-                });
-                $('#datetimepicker2').datetimepicker({
-                    //locale: 'en-gb',
-                    format: 'YYYY-MM-DD HH:MM'
-                });
+            $.ajax({
+                url: "{% url 'get student categories' %}?student_id={{ user.id }}",
+                type: "GET",
+                success: function (data) {
+                    for (let i = 0; i < data.categories.length; i++){
+                        //get
+                        $(":checkbox[value=" + i + "]").prop('checked', true);//parent().id//.prop('checked', true); //.text())
+                    }
+                }
+            });
 
- /*              $("#create-event-btn").click(function() {
-                   $.ajax({
-                       url: "{% url 'new event' %}",
-                       method: "POST",
-                       data: $("#create-event-form").serializeArray(),
-                       success: function(data) {
-                       }
-                   });
-               }); */
+            $('#datetimepicker1').datetimepicker({
+                //locale: 'en-gb',
+                format: 'YYYY-MM-DD HH:MM'
+            });
+            $('#datetimepicker2').datetimepicker({
+                //locale: 'en-gb',
+                format: 'YYYY-MM-DD HH:MM'
+            });
 
-               $("#update-event-btn").click(function() {
-                   $.ajax({
+            $("#update-event-btn").click(function() {
+                $.ajax({
                     url: "{% url 'update event' %}?event_id={{ event.id }}",
                     type: "POST",
                     data: $("#update-event-form").serializeArray(),
                     success: function (data) {
-
                     }
                 })
             })

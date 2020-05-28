@@ -475,8 +475,10 @@ def get_student_categories(request):
     """
     Gets a list of categories that the student is interested in
     """
-    sp_id = request.GET['student_profile_id']
-    categories_f = StudentCategories.objects.filter(student_profile_id=sp_id).values()
+    student_id = request.GET['student_id']
+    student = get_student_by_id(student_id)
+    sp = get_profile_by_student(student)
+    categories_f = StudentCategories.objects.filter(student_profile_id=sp.id).values()
     categories = list(Categories.objects.filter(id__in=Subquery(categories_f.values('categories_id'))).values())
     return JsonResponse({
         'categories': categories
