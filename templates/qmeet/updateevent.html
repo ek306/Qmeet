@@ -2,7 +2,7 @@
 {% block content %}
 
     <h2>UPDATE NEW EVENT</h2>
-    <form id="update-event-form" method="POST">
+    <form id="update-event-form" method="POST" action="{% url 'update event' %}?event_id={{ event.id }}">
         {% csrf_token %}
         <div class="main-page-body form-group">
             <div>
@@ -25,7 +25,7 @@
             <div>
                 <label for="datetimepicker1">Start date:</label>
                 <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                    <input id="start-date" name="start-date" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1">
+                    <input id="start-date" name="start-date" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" value="{{ event.start_date }}">
                     <span class="input-group-addon" data-target="#datetimepicker1" data-toggle="datetimepicker">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -34,36 +34,25 @@
             <div>
                 <label for="datetimepicker2">End date:</label>
                 <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                    <input id="end-date" name="end-date" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2">
+                    <input id="end-date" name="end-date" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2" value="{{ event.end_date }}">
                     <span class="input-group-addon" data-target="#datetimepicker2" data-toggle="datetimepicker">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
             </div>
 
- <!--           <table>
-                <tr>
-                    <td><label for="start-date">Start date:</label></td> <td><input id="start-date" name="start-date" type="datetime-local"></td>
-                </tr>
-                <tr>
-                    <td><label for="end-date">End date:</label></td> <td><input id="end-date" name="end-date" type="datetime-local"></td>
-                </tr>
-            </table>-->
-
-
-            <button class="btn btn-primary" type="button" id="update-event-btn">Update event</button>
+            <button class="btn btn-primary" type="submit" id="update-event-btn">Update event</button>
         </div>
     </form>
 
     <script>
         $(document).ready(function() {
             $.ajax({
-                url: "{% url 'get student categories' %}?student_id={{ user.id }}",
+                url: "{% url 'get event categories' %}?event_id={{ event.id }}",
                 type: "GET",
                 success: function (data) {
                     for (let i = 0; i < data.categories.length; i++){
-                        //get
-                        $(":checkbox[value=" + i + "]").prop('checked', true);//parent().id//.prop('checked', true); //.text())
+                        $(":checkbox[value=" + data.categories[i].id + "]").prop('checked', true);//parent().id//.prop('checked', true); //.text())
                     }
                 }
             });
@@ -72,20 +61,11 @@
                 //locale: 'en-gb',
                 format: 'YYYY-MM-DD HH:MM'
             });
+
             $('#datetimepicker2').datetimepicker({
                 //locale: 'en-gb',
                 format: 'YYYY-MM-DD HH:MM'
             });
-
-            $("#update-event-btn").click(function() {
-                $.ajax({
-                    url: "{% url 'update event' %}?event_id={{ event.id }}",
-                    type: "POST",
-                    data: $("#update-event-form").serializeArray(),
-                    success: function (data) {
-                    }
-                })
-            })
         })
     </script>
 

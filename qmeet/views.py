@@ -492,6 +492,19 @@ def get_student_categories(request):
 
 
 @login_required()
+def get_event_categories(request):
+    """
+    Get a list of categories that an event is listed as
+    """
+    event_id = request.GET['event_id']
+    event = Event.objects.get(id=event_id)
+    categories_f = EventCategories.objects.filter(event=event)
+    categories = list(Categories.objects.filter(id__in=Subquery(categories_f.values('categories_id'))).values())
+    return JsonResponse({
+        'categories': categories
+    })
+
+@login_required()
 def check_student_profile_exists(request):
     """
     Checks if the current user has created a student profile

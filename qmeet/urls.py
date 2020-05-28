@@ -36,6 +36,7 @@ urlpatterns = [
     path('reject_friend_request', views.reject_friend_request, name='reject friend request'),
     path('remove_friend', views.remove_friend, name='remove friend'),
     path('get_student_categories', views.get_student_categories, name='get student categories'),
+    path('get_event_categories', views.get_event_categories, name='get event categories'),
     path('compare_user_and_student_profile', views.compare_user_and_student_profile, name='compare user and student profile'),
     path('check_student_profile_exists', views.check_student_profile_exists, name='check student profile exists'),
     path('check_user_is_host', views.check_user_is_host, name='check user is host'),
