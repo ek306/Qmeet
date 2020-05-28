@@ -64,7 +64,8 @@
                 },
                 success: function (data) {
                     if (data.context == "Host") {
-                        $("#join-event-div").append('<button class="btn" type="button" id="update-event-button"><a href="{% url "update event page" %}?event_id={{ event.id }}">Update event</a></button>')
+                        $("#join-event-div").append('<button class="btn" type="button" id="update-event-button"><a href="{% url "update event page" %}?event_id={{ event.id }}">Update event</a></button>'
+                        + '<button class="btn" type="button" id="cancel-event-button"><a href="{% url 'cancel event' %}?event_id={{ event.id }}">Cancel event</a></button>')
                     }
 
                     else if (data.context == "Neither") {

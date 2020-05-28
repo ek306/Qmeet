@@ -26,7 +26,7 @@
     <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <a class="navbar-brand" href="/">
-            <img src="{% static 'images/qmslogo.png' %}" width=210px" height="40px">
+            <img src="{% static 'images/qmslogo.png' %}" width=150px" height="40px">
         </a>
       <div class="container">
         <div class="navbar-header">
@@ -46,6 +46,7 @@
                   <li><a href="{% url 'students' %}">Search students</a></li>
                   <li><a href="{% url 'events' %}">Search events</a></li>
                   <li><a href="{% url 'render student profile' %}">My profile</a></li>
+                  <li><a href="{% url 'messages_inbox' %}">Messages</a></li>
               {% endif %}
           </ul>
           <ul class="nav navbar-nav navbar-right">

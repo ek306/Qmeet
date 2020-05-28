@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <div class="profile-right">
+        <d class="profile-right">
             <h5>
                 <label>Course:</label>
                 <p>{{ student_profile.course }}</p>
@@ -31,6 +31,11 @@
             <h5>
                 <label>Bio:</label>
                 <p>{{ student_profile.bio }}</p>
+            </h5>
+            <h5>
+                <label>Friends list:</label>
+                <ul id="friends-list">
+                </ul>
             </h5>
         </div>
 
@@ -99,7 +104,11 @@
             url: "{% url 'get friend list' %}?student_id={{ student_profile.student.id }}",
             type: "GET",
             success: function (data) {
-                alert("SUCCESS")
+                var i;
+                for(i=0; i<data.students.length; i++) {
+                    $("#friends-list").append('<li id=' + data.students[i][0] + '>' + '<a href="{% url 'get student profile' %}?student_id=' + data.students[i][0] + '">'
+                + data.students[i][1] + '</a>' + '</li>')
+                }
             }
         })
     })
