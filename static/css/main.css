@@ -91,8 +91,9 @@ box-shadow:
     color: white;
     font-weight: bold;
     font-size: medium;
-    line-height: 40px;
+    height: 40px;
     padding-left: 10px;
+    padding-top: 10px;
 }
 
 .navbar {
@@ -122,4 +123,14 @@ button {
     font-size: large;
     padding-top: 25px;
     font-weight: bolder;
+}
+
+#received-friend-requests-list li{
+    font-size: medium;
+}
+
+.card-body{
+    height: 210px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
