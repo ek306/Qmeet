@@ -39,7 +39,7 @@
                     Hosted Events
                 </div>
                 <div class="card-body">
-                    <ul id="host-events-list"></ul>
+                    <ul id="host-events-list" class="list-group list-group-flush"></ul>
                     <!--<ul class="list-group list-group-flush">-->
                     </ul>
                 </div>
@@ -57,34 +57,12 @@
                 </div>
             </div>
         </div>
-<!--
-            <div id="recommended-event-details" class="event-details">
-                <ul id="recommended-event-list"></ul>
-            </div>-->
         </div>
     </div>
 
     <div></div>
 
 <script>
-
-/*    $(document).ready(function() {
-        $.ajax({
-            url: "{% url 'check student profile exists' %}",
-            type: "GET",
-            success: function (data) {
-                if(data.profile_exists == true) {
-                    //$("#student-profile-div").append('<p><a href="{% url 'get student profile' %}?student_id={{ user.id }}">View student profile</a></p>')
-                    $("#top-nav-bar").append('<li><a href="{% url 'get student profile' %}?student_id={{ user.id }}">My Profile</a></li>')
-                }
-
-                else if(data.profile_exists == false){
-                    //$("#student-profile-div").append('<p><a href="{% url 'create student profile' %}">Create student profile</a></p>')
-                    $("#top-nav-bar").append('<li><a href="{% url 'create student profile' %}">My Profile</a></li>')
-                }
-            }
-        })
-    }) */
 
     $(document).ready(function() {
         $.ajax({
@@ -126,7 +104,7 @@
             success: function (data) {
                 var i;
                 for(i=0; data.hosted_events.length; i++) {
-                    $("#host-events-list").append('<li id=' + data.hosted_events[i].id + '>' + '<a href="{% url 'get event' %}?event_id=' + data.hosted_events[i].id + '">'
+                    $("#host-events-list").append('<li class="list-group-item" id=' + data.hosted_events[i].id + '>' + '<a href="{% url 'get event' %}?event_id=' + data.hosted_events[i].id + '">'
                         + data.hosted_events[i].title + '</a>' + '</li>')
                 }
             }
@@ -140,8 +118,9 @@
             dataType: "json",
             success: function(data) {
                for(var i=0; i<data.students.length; i++) {
-                   $("#student-friend-list").append('<li id=' + data.students[i][0] + '>' + '<a href="{% url 'get student profile' %}?student_id=' + data.students[i][0]
-                       + '">' + data.students[i][1] + '</a>' + '</li>')
+                   $("#student-friend-list").append('<li id=' + data.students[i][0] + '>' +
+                       '<a href="{% url 'get student profile' %}?student_id=' +
+                       data.students[i][0] + '">' + data.students[i][1] + '</a>' + '</li>')
                }
             }
         })
@@ -155,8 +134,10 @@
             success: function (data) {
                 var i;
                 for(i=0; i<data.joined_events.length; i++) {
-                    $("#joined-events-list").append('<li id=' + data.joined_events[i].id + '>' + '<a href="{% url 'get event' %}?event_id=' + data.joined_events[i].id + '">'
-                        + data.joined_events[i].title + '</a>' + '</li>')
+                    $("#joined-events-list").append('<li class="list-group-item" id=' +
+                        data.joined_events[i].id + '>' + '<a href="{% url 'get event' %}?event_id=' +
+                        data.joined_events[i].id + '">' +
+                        data.joined_events[i].title + '</a>' + '</li>')
                 }
             }
         })
@@ -170,8 +151,10 @@
             success: function (data) {
                 var i;
                 for(i=0; i<data.recommended_events.length; i++) {
-                    $("#recommended-event-list").append('<li id=' + data.recommended_events[i][0] + '>' + '<a href="{% url 'get event' %}?event_id=' + data.recommended_events[i][0] + '">'
-                    + data.recommended_events[i][1] + '</a>' + '</li>')
+                    $("#recommended-event-list").append('<li class="list-group-item" id=' +
+                        data.recommended_events[i][0] + '>' + '<a href="{% url 'get event' %}?event_id=' +
+                        data.recommended_events[i][0] + '">' +
+                        data.recommended_events[i][1] + '</a>' + '</li>')
                 }
             }
         })
