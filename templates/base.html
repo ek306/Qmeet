@@ -16,7 +16,6 @@
             }
         </style>
         <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
-<!--        <script>window.jQuery || document.write('<script src="{% static 'js/vendor/jquery-1.11.2.min.js' %}"><\/script>')</script> -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
         <script src="https://rawgit.com/tempusdominus/bootstrap-3/master/build/js/tempusdominus-bootstrap-3.js"></script>
@@ -57,17 +56,6 @@
                   <li><a href="http://127.0.0.1:8000/qmeet/login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
               {% endif %}
           </ul>
- <!--       <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div> --> <!--/.navbar-collapse -->
       </div>
     </nav>
 
@@ -79,29 +67,4 @@
         </div>
     </div>
     </body>
-<!--
-    <script>
-        $(document).ready(function() {
-            $.ajax({
-                url: "{% url 'check student profile exists' %}",
-                type: "GET",
-                success: function (data) {
-                    let element =  document.getElementById('elementId');
-                    if (typeof(element) != 'undefined' && element != null){
-                        if(data.profile_exists == true) {
-                            alert('profile exists')
-                            //$("#student-profile-div").append('<p><a href="{% url 'get student profile' %}?student_id={{ user.id }}">View student profile</a></p>')
-                            $("#top-nav-bar").append('<li id="my-profile"><a href="{% url 'get student profile' %}?student_id={{ user.id }}">My Profile</a></li>')
-                        }
-
-                        else if(data.profile_exists == false){
-                            alert('profile does not exist')
-                            //$("#student-profile-div").append('<p><a href="{% url 'create student profile' %}">Create student profile</a></p>')
-                            $("#top-nav-bar").append('<li id="my-profile"><a href="{% url 'create student profile' %}">My Profile</a></li>')
-                        }
-                    }
-                }
-            })
-        })
-    </script>-->
 </html>
